@@ -326,9 +326,14 @@
         <a href="index.html" class="back-link">
             <i class="ri-arrow-left-line"></i> Back to Portfolio
         </a>
-        <button onclick="window.print()" class="print-btn">
-            <i class="ri-printer-line"></i> Print / Save PDF
-        </button>
+        <div style="display: flex; gap: 10px;">
+            <a href="RESUME.pdf" download="Sandesh_Naik_Resume.pdf" class="print-btn" style="background-color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                <i class="ri-download-line"></i> Download PDF
+            </a>
+            <button onclick="window.print()" class="print-btn" style="background-color: #374151;">
+                <i class="ri-printer-line"></i> Print Page
+            </button>
+        </div>
     </div>
 
     <!-- Resume Box -->
@@ -350,6 +355,9 @@
                 </a>
                 <a href="https://github.com/naiksandesh135-bit" target="_blank">
                     <i class="ri-github-fill"></i> GitHub
+                </a>
+                <a href="index.html" target="_blank">
+                    <i class="ri-global-line"></i> Portfolio
                 </a>
             </div>
         </header>
