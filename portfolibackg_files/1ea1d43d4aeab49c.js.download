@@ -1,0 +1,8 @@
+(globalThis["webpackChunk_canva_web"] = globalThis["webpackChunk_canva_web"] || []).push([[17793],{
+
+/***/ 202576:
+function(_, __, __webpack_require__) {__webpack_require__.n_x = __webpack_require__.n;const __web_req__ = __webpack_require__;__web_req__(905716);globalThis._456c437108d2d2713799e19380be528d = globalThis._456c437108d2d2713799e19380be528d || {};(function(__c) {var G=__c.G;__c.Ao=function(a,b){__c.ja(a in b);return b[a]};__c.Bo=G(()=>[11,"SETTINGS_2",16,"ADDRESS",2,"BILLING_INFO",3,"CAPABILITIES",5,"BRAND_LOGIN_POLICY",21,"BRAND_JOIN_POLICY",7,"BRAND_PROPERTIES",23,"ALLOWED_FRAME_ANCESTORS",10,"MEMBER_COUNT",12,"SUGGESTION_SETTINGS",20,"EXTERNAL_BRAND_LINKS",14,"AVATAR",15,"DESCRIPTION",22,"BRAND_PLAN_DESCRIPTION",24,"BRAND_ARCHIVE"]);__c.Bib=G(()=>[1,2]);__c.Cib=__c.E(()=>({enabled:__c.ri("enabled",1),fWf:__c.qi("allowedReferrers",2)}));__c.Dib=__c.E(()=>({Pt:__c.P("companyName",1),H4f:__c.P("companyAddress",2),YGb:__c.qi("billingContacts",3)}));__c.Eib=G(()=>[2],1);__c.Fib=G(()=>[1,5,2,4]);__c.Gib=G(()=>[1,4,2,3]);__c.Co=__c.E(()=>({projection:__c.Ha(11,__c.Fib),La:__c.P(12),limit:__c.ii(13,100),mode:__c.r("A?",1,"BY_BRAND"),brand:__c.O(1),type:__c.A(2,__c.Gib)}));__c.Hib=__c.E(()=>({quota:__c.u(1,__c.I9a)}));
+}).call(globalThis, globalThis._456c437108d2d2713799e19380be528d);}
+
+}])
+//# sourceMappingURL=sourcemaps/1ea1d43d4aeab49c.js.map

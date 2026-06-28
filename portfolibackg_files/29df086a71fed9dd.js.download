@@ -1,0 +1,9 @@
+(globalThis["webpackChunk_canva_web"] = globalThis["webpackChunk_canva_web"] || []).push([[74384],{
+
+/***/ 844135:
+function(_, __, __webpack_require__) {__webpack_require__.n_x = __webpack_require__.n;const __web_req__ = __webpack_require__;__web_req__(905716);__web_req__(202576);__web_req__(920518);__web_req__(953008);globalThis._456c437108d2d2713799e19380be528d = globalThis._456c437108d2d2713799e19380be528d || {};(function(__c) {var w=__c.w;var P=__c.P;var ri=__c.ri;var E=__c.E;var SNc=E(()=>({HQg:__c.O(1)})),TNc=E(()=>({rka:ri(1),wZb:ri(2),rVb:ri(4),Lfa:ri(8),V5b:ri(5),Exb:ri(6),wNa:ri(7)})),UNc=E(()=>({token:__c.O(1),Fxg:P(2)}));__c.VNc=E(()=>({locale:P("locale",2),displayName:P("displayName",4),Zy:__c.mi("dateOfBirth",35),credentials:__c.u("credentials",6,__c.Oi),T2f:w("childAccount",37,SNc),f3g:P("selfSignupToken",7),Xn:P("analyticsId",8),Bwg:P("initialDesignType",9),IWf:P("apiBrandId",10),referrer:P("referrer",11),tJ:P("journey",13),y3c:P("brandAccessToken",14),Exg:w("invitation",31,UNc),qdh:__c.Ha("userActions",23,__c.an),$Hg:ri("marketingEmailConsent",16),fYg:P("referrerCode",18),yie:P("clickId",20),jy:__c.Ga("productVariant",
+21,__c.Eib),Bf:P("documentId",29),x9:P("documentExtension",30),eg:w("documentContent",17,__c.gsc),Tue:P("documentCategory",24),epa:__c.R("supportErrorResponse",19),fAc:__c.R("mintAtt",22),cf:w("riskContext",33,__c.sn),kwb:w("privacyPreferences",34,TNc),bwg:__c.R("includeEncryptedNextSteps",36),headers:(0,__c.xi)("headers",38),ek:__c.Ga("productSuite",39,__c.Xi),CZa:P("authnState",40)}));__c.WNc=E(()=>({cq:__c.Ga("schema",1,__c.Lm),openSession:__c.R("openSession",2),sg:P("analyticsCorrelationId",6),body:w("body",3,__c.uz),Qcf:__c.qi("resourceOrigins",7),template:__c.O("template",4,'"-"'),duplicate:__c.O("duplicate",5,'"-"'),type:P("type",8),dimensions:P("dimensions",9)}));
+}).call(globalThis, globalThis._456c437108d2d2713799e19380be528d);}
+
+}])
+//# sourceMappingURL=sourcemaps/29df086a71fed9dd.js.map

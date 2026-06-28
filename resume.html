@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Sandesh Damodar Naik</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --border-color: #e5e7eb;
+            --bg-light: #f9fafb;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-dark);
+            background-color: #f3f4f6;
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* Top Action Bar (hidden during printing) */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 850px;
+            margin: 0 auto 20px;
+            padding: 0 10px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .print-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .print-btn:hover {
+            background-color: #172554;
+            transform: translateY(-1px);
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .links-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .links-row a {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .links-row a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 24px 0;
+        }
+
+        /* Resume Sections */
+        section {
+            margin-bottom: 28px;
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 4px;
+        }
+
+        .objective-text {
+            font-size: 14.5px;
+            color: var(--text-dark);
+            text-align: justify;
+        }
+
+        /* Grid layouts */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .edu-item {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 14.5px;
+            color: var(--primary);
+        }
+
+        .edu-year {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .edu-school {
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .edu-grade {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Skills layout */
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-group {
+            font-size: 14px;
+        }
+
+        .skill-group strong {
+            color: var(--primary);
+            display: inline-block;
+            width: 180px;
+        }
+
+        .skill-group span {
+            color: var(--text-dark);
+        }
+
+        /* Projects & Hackathons */
+        .item-block {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+
+        .item-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .item-title span {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .item-meta {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .item-bullets {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 13.5px;
+            color: var(--text-light);
+        }
+
+        .item-bullets li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        /* PRINT STYLING */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .action-bar {
+                display: none;
+            }
+
+            .edu-item {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Action Bar (Hidden in Print) -->
+    <div class="action-bar">
+        <a href="index.html" class="back-link">
+            <i class="ri-arrow-left-line"></i> Back to Portfolio
+        </a>
+        <button onclick="window.print()" class="print-btn">
+            <i class="ri-printer-line"></i> Print / Save PDF
+        </button>
+    </div>
+
+    <!-- Resume Box -->
+    <div class="resume-container">
+        
+        <!-- Header -->
+        <header>
+            <h1>SANDESH DAMODAR NAIK</h1>
+            <div class="contact-info">
+                <span><i class="ri-map-pin-line"></i> Bangalore, Karnataka</span>
+                <span>·</span>
+                <span><i class="ri-phone-line"></i> +91 7899493018</span>
+                <span>·</span>
+                <span><i class="ri-mail-line"></i> <a href="mailto:naiksandesh135@gmail.com">naiksandesh135@gmail.com</a></span>
+            </div>
+            <div class="links-row">
+                <a href="https://www.linkedin.com/in/sandesh-naik-44109b395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                    <i class="ri-linkedin-box-fill"></i> LinkedIn
+                </a>
+                <a href="https://github.com/naiksandesh135-bit" target="_blank">
+                    <i class="ri-github-fill"></i> GitHub
+                </a>
+            </div>
+        </header>
+
+        <hr>
+
+        <!-- Objective -->
+        <section>
+            <h2 class="section-title">Objective</h2>
+            <p class="objective-text">
+                Second-year B.E. Computer Science Engineering student with a strong interest in Artificial Intelligence and Machine Learning (AI/ML). Passionate about solving real-world problems through technology and building practical software solutions. Skilled in Python, Java, frontend development, and problem-solving, with hands-on experience in developing responsive web applications and learning modern AI technologies.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <span class="edu-degree">B.E. Computer Science & Eng.</span>
+                        <span class="edu-year">2024 – 2028</span>
+                    </div>
+                    <p class="edu-school">Dayananda Sagar College of Engineering, Bangalore</p>
+                    <p class="edu-grade"><strong>CGPA:</strong> 8.2</p>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <span class="edu-degree">Class XII (PCMB)</span>
+                        <span class="edu-year">2022 – 2024</span>
+                    </div>
+                    <p class="edu-school">Alva’s PU College, Moodbidri, Mangalore</p>
+                    <p class="edu-grade"><strong>Score:</strong> 91%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-list">
+                <div class="skill-group">
+                    <strong>Programming Languages:</strong>
+                    <span>C++, Python, Java, JavaScript</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Web Development:</strong>
+                    <span>MERN Stack, React, Node.js, Express.js, MongoDB, HTML, CSS</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Database & Tools:</strong>
+                    <span>MySQL, Supabase, Git, GitHub, VS Code, Vercel</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Core Concepts:</strong>
+                    <span>Data Structures & Algorithms, OOP, Computer Networks, Operating Systems</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2 class="section-title">Projects</h2>
+            
+            <!-- StudentOS -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">StudentOS <span>— Student Career Management Platform</span></span>
+                    <span class="item-meta">React, Vite, Tailwind CSS, Supabase, PostgreSQL</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed a full-stack career management platform combining opportunity tracking, project management, eligibility checking, and career analytics.</li>
+                    <li>Configured Supabase backend featuring Google OAuth authentication and granular Row Level Security (RLS) for data isolation.</li>
+                    <li>Implemented a dynamic Eligibility Checker module parsing student branch, CGPA, and skills to verify opportunity criteria.</li>
+                    <li>Designed responsive dashboards displaying total opportunities, project tasks, and overall career statistics.</li>
+                </ul>
+            </div>
+
+            <!-- Dhwani AI -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">Dhwani AI <span>— AI-Powered Patient Engagement System</span></span>
+                    <span class="item-meta">HTML, CSS, JS, Node.js, Supabase, Twilio, Groq AI</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed an AI-powered healthcare platform for automated medicine reminders and multilingual patient interaction.</li>
+                    <li>Integrated Twilio voice APIs and AI-based response analysis for real-time healthcare communication workflows.</li>
+                    <li>Designed scalable backend systems for patient data management and intelligent response processing.</li>
+                </ul>
+            </div>
+
+            <!-- GridWatch -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">GridWatch <span>— Smart Infrastructure Optimization System</span></span>
+                    <span class="item-meta">React, Tailwind CSS, FastAPI, Python, React Flow, Recharts</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed a smart infrastructure simulation system using Minimum Spanning Tree algorithms and memory allocation strategies for optimized network connectivity.</li>
+                    <li>Implemented Prim’s and Kruskal’s algorithms along with First Fit, Best Fit, and Worst Fit memory allocation techniques for routing and fragmentation analysis.</li>
+                    <li>Built interactive visual dashboards and dynamic graph simulations for infrastructure monitoring and analytics.</li>
+                </ul>
+            </div>
+
+            <!-- Blood Banking System -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">Blood Banking System <span>— donation Management Platform</span></span>
+                    <span class="item-meta">HTML, CSS, JS, Node.js, Twilio</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed a blood banking management platform for handling donor registration, blood availability tracking, and emergency communication workflows.</li>
+                    <li>Integrated Twilio services for notification and communication support between donors, hospitals, and blood banks.</li>
+                    <li>Designed responsive interfaces and backend functionalities for efficient blood request and management operations.</li>
+                </ul>
+            </div>
+
+            <!-- VoiceGuard AI -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">VoiceGuard AI <span>— AI-Based Fake Call Detection System</span></span>
+                    <span class="item-meta">HTML, CSS, JS, Node.js</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed an AI-powered call analysis platform designed to detect fake and AI-generated voice calls.</li>
+                    <li>Implemented intelligent detection workflows and backend processing systems for analyzing suspicious communication patterns.</li>
+                    <li>Focused on improving cybersecurity awareness and preventing digital voice fraud using AI concepts.</li>
+                </ul>
+            </div>
+
+            <!-- Cricket Pro -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">Cricket Pro <span>— Cricket Equipment Shopping Platform</span></span>
+                    <span class="item-meta">HTML, CSS, JavaScript</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed an online shopping platform for cricket equipment and accessories with responsive user interfaces.</li>
+                    <li>Implemented product browsing, category filtering, and interactive shopping functionalities for improved customer experience.</li>
+                    <li>Focused on frontend performance, usability, and accessibility for sports product management.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Hackathons & Competitions -->
+        <section>
+            <h2 class="section-title">Hackathons & Competitions</h2>
+
+            <!-- HackMatrix 2.0 -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">HackMatrix 2.0 <span>— 2nd Place Winner (IIT Patna)</span></span>
+                    <span class="item-meta">36-Hour Hackathon</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Secured 2nd position at HackMatrix 2.0 conducted at IIT Patna in collaboration with JioHealth and NJACK.</li>
+                    <li>Participated in a 36-hour hackathon focused on AI-powered healthcare communication solutions (Dhwani AI).</li>
+                </ul>
+            </div>
+
+            <!-- The Big Hack -->
+            <div class="item-block">
+                <div class="item-header">
+                    <span class="item-title">The Big Hack <span>— Acharya Institute of Technology</span></span>
+                    <span class="item-meta">24-Hour Hackathon</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Participated in a 24-hour national-level hackathon focused on cybersecurity and digital forensic solutions.</li>
+                    <li>Contributed to the development of Cyber Lens, an AI-powered forensic report analysis system for investigation workflows.</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Lens</title>
+    <style>
+        /* CORE STYLES & COLOR PALETTE */
+        :root {
+    --theme-bg: #121212;
+    --theme-panel: #1b1b1b;
+    --theme-text: #e5e5e5;
+    --theme-accent: #00ffff;
+}
+
+/* Light Theme */
+.light-theme {
+    --theme-bg: #ffffff;
+    --theme-panel: #f3f3f3;
+    --theme-text: #111111;
+    --theme-accent: #007bff;
+}
+
+/* Blue Forensic Theme */
+.blue-theme {
+    --theme-bg: #001f33;
+    --theme-panel: #003a5c;
+    --theme-text: #cfe8ff;
+    --theme-accent: #00c3ff;
+}
+/* ========================= */
+/* APPLY THEME TO WHOLE SITE */
+/* ========================= */
+
+body {
+    background: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+/* All main cards / panels / sidebar / table containers */
+.panel,
+.sidebar,
+.summary-card,
+.alert-box,
+.navbar,
+.card,
+.table-container,
+input,
+textarea,
+select {
+    background: var(--theme-panel) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+/* Buttons */
+button,
+.btn,
+.nav-link.active {
+    background: var(--theme-accent) !important;
+    color: var(--theme-bg) !important;
+}
+
+        :root {
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1e1e1e;
+            --color-neon-blue: #00FFFF;
+            --color-neon-red: #FF4500;
+            --color-text-light: #e0e0e0;
+            --color-text-dim: #9e9e9e;
+            --color-border: #333;
+            --color-hover: rgba(0, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* UTILITIES & BASE STYLES */
+        .panel, .summary-card, .table-container {
+            background-color: var(--color-bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--color-border);
+        }
+        
+        .panel-title {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--color-text-light);
+            border-bottom: 1px dashed var(--color-border);
+            padding-bottom: 5px;
+        }
+
+        /* NAVIGATION */
+        .sidebar {
+            width: 250px;
+            background-color: var(--color-bg-secondary);
+            padding: 20px 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--color-neon-blue);
+            text-shadow: 0 0 8px var(--color-neon-blue);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-link {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--color-text-light);
+            transition: background-color 0.3s, color 0.3s;
+            border-left: 5px solid transparent;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--color-hover);
+            color: var(--color-neon-blue);
+            border-left-color: var(--color-neon-blue);
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .header-title {
+            color: var(--color-neon-blue);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        /* DASHBOARD & FORMS */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card .metric {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--color-neon-blue);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* ADDED STYLE FOR QUICK INGEST FORM */
+        #quick-ingest-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #quick-ingest-form .data-input {
+            flex-grow: 1; 
+        }
+
+        #quick-ingest-form button {
+            padding: 10px 15px !important; 
+            white-space: nowrap;
+        }
+
+        /* Risk and Alerts */
+        .risk-alerts-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .risk-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .risk-score {
+            font-weight: bold;
+            color: var(--color-neon-red);
+            text-shadow: 0 0 3px var(--color-neon-red);
+        }
+
+        .alert-item {
+            background-color: rgba(255, 69, 0, 0.1);
+            border-left: 4px solid var(--color-neon-red);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .graph-placeholder {
+            height: 350px; 
+            background-color: #000; 
+            border: 2px dashed var(--color-neon-blue); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            color: var(--color-neon-blue); 
+            font-size: 1.2em;
+            margin-top: 30px;
+        }
+        
+        /* QUERIES & FORMS */
+        .query-box, .data-input {
+            width: 100%;
+            background-color: #000;
+            border: 2px solid var(--color-neon-blue);
+            border-radius: 25px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            color: var(--color-text-light);
+            outline: none;
+            transition: box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .query-box:focus {
+            box-shadow: 0 0 15px var(--color-neon-blue);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-grid label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-text-dim);
+        }
+
+        .data-input {
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+            padding: 10px;
+        }
+
+        /* File input specific styling */
+        #input-data-file {
+            border: 2px dashed var(--color-neon-blue);
+            padding: 10px;
+            background-color: #000;
+            border-radius: 4px;
+            color: var(--color-text-light);
+            width: 100%; /* Important for form layout */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        button {
+            background-color: var(--color-neon-blue);
+            color: var(--color-bg-primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        button:hover {
+            background-color: #4dffff;
+            box-shadow: 0 0 10px var(--color-neon-blue);
+        }
+        
+        .btn-red {
+            background-color: var(--color-neon-red);
+            color: white;
+        }
+        
+        .btn-red:hover {
+            background-color: #ff664d;
+            box-shadow: 0 0 10px var(--color-neon-red);
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background-color: #282828;
+            color: var(--color-neon-blue);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .collapsible-row:hover {
+            background-color: #282828;
+            cursor: pointer;
+        }
+
+        .detail-row {
+            background-color: #242424;
+            color: var(--color-text-dim);
+        }
+        
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* MULTIMEDIA */
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .thumbnail-item {
+            text-align: center;
+            border: 2px solid var(--color-border);
+            border-radius: 4px;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+        
+        .thumbnail-item.face-match {
+            border-color: var(--color-neon-red);
+            box-shadow: 0 0 8px var(--color-neon-red);
+        }
+        
+        .thumbnail-img {
+            width: 100%;
+            height: 100px;
+            background-color: #000;
+            border: 1px solid #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            color: var(--color-text-dim);
+        }
+        /* SETTINGS MENU LOOK */
+.settings-menu-item {
+    padding: 12px;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.settings-menu-item:hover {
+    background: rgba(0,255,255,0.1);
+    color: var(--color-neon-blue);
+}
+
+.settings-menu-item.active {
+    background: rgba(0,255,255,0.15);
+    border-left: 4px solid var(--color-neon-blue);
+    color: var(--color-neon-blue);
+}
+
+/* THEMES USING CSS VARIABLES */
+:root {
+    --theme-bg: #121212;
+    --theme-text: #e5e5e5;
+    --theme-panel: #1b1b1b;
+}
+
+.light-theme {
+    --theme-bg: #ffffff;
+    --theme-text: #111111;
+    --theme-panel: #f3f3f3;
+}
+
+.blue-theme {
+    --theme-bg: #001f33;
+    --theme-text: #d7ecff;
+    --theme-panel: #003a5c;
+}
+
+/* APPLY THEME */
+body {
+    background: var(--theme-bg);
+    color: var(--theme-text);
+}
+
+.panel {
+    background: var(--theme-panel) !important;
+}
+
+        
+        /* SQL PLACEHOLDER */
+        .sql-placeholder {
+            background-color: #000;
+            color: #38a438; /* Green for code */
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-family: 'Consolas', monospace;
+            white-space: pre-wrap;
+            border: 1px solid #105010;
+            font-size: 0.9em;
+        }
+        /* small styles for graph cards and modal */
+.graph-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.03);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:110px;
+}.section {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.section.active {
+  opacity: 1;
+  transform: translateX(0);
+}button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #00c3ff;
+  transition: 0.3s;
+}
+button:active {
+  transform: scale(0.95);
+}.face-box {
+  border: 2px solid #00c3ff;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #00c3ff; }
+  50% { box-shadow: 0 0 15px #00c3ff; }
+  100% { box-shadow: 0 0 5px #00c3ff; }
+}
+
+
+
+
+
+.graph-card h4 { margin:0; font-size:1rem; color:var(--color-neon-blue); }
+.graph-card p { margin:0; color:var(--color-text-dim); font-size:0.85rem; }
+.small-chart { height:60px; width:100%; }
+#chart-preview-area canvas { max-width:100%; }
+#modal-chart-container canvas, #modal-chart-container svg { width:100%; height:420px; display:block; }
+        :root {
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1e1e1e;
+            --color-neon-blue: #00FFFF;
+            --color-neon-red: #FF4500;
+            --color-text-light: #e0e0e0;
+            --color-text-dim: #9e9e9e;
+            --color-border: #333;
+            --color-hover: rgba(0, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* UTILITIES & BASE STYLES */
+        .panel, .summary-card, .table-container {
+            background-color: var(--color-bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--color-border);
+        }
+        
+        .panel-title {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--color-text-light);
+            border-bottom: 1px dashed var(--color-border);
+            padding-bottom: 5px;
+        }
+
+        /* NAVIGATION */
+        .sidebar {
+            width: 250px;
+            background-color: var(--color-bg-secondary);
+            padding: 20px 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--color-neon-blue);
+            text-shadow: 0 0 8px var(--color-neon-blue);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-link {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--color-text-light);
+            transition: background-color 0.3s, color 0.3s;
+            border-left: 5px solid transparent;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--color-hover);
+            color: var(--color-neon-blue);
+            border-left-color: var(--color-neon-blue);
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .header-title {
+            color: var(--color-neon-blue);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        /* DASHBOARD & FORMS */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card .metric {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--color-neon-blue);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* ADDED STYLE FOR QUICK INGEST FORM */
+        #quick-ingest-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #quick-ingest-form .data-input {
+            flex-grow: 1; 
+        }
+
+        #quick-ingest-form button {
+            padding: 10px 15px !important; 
+            white-space: nowrap;
+        }
+
+        /* Risk and Alerts */
+        .risk-alerts-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .risk-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .risk-score {
+            font-weight: bold;
+            color: var(--color-neon-red);
+            text-shadow: 0 0 3px var(--color-neon-red);
+        }
+
+        .alert-item {
+            background-color: rgba(255, 69, 0, 0.1);
+            border-left: 4px solid var(--color-neon-red);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .graph-placeholder {
+            height: 350px; 
+            background-color: #000; 
+            border: 2px dashed var(--color-neon-blue); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            color: var(--color-neon-blue); 
+            font-size: 1.2em;
+            margin-top: 30px;
+        }
+        
+        /* QUERIES & FORMS */
+        .query-box, .data-input {
+            width: 100%;
+            background-color: #000;
+            border: 2px solid var(--color-neon-blue);
+            border-radius: 25px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            color: var(--color-text-light);
+            outline: none;
+            transition: box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .query-box:focus {
+            box-shadow: 0 0 15px var(--color-neon-blue);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-grid label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-text-dim);
+        }
+
+        .data-input {
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+            padding: 10px;
+        }
+
+        /* File input specific styling */
+        #input-data-file {
+            border: 2px dashed var(--color-neon-blue);
+            padding: 10px;
+            background-color: #000;
+            border-radius: 4px;
+            color: var(--color-text-light);
+            width: 100%; /* Important for form layout */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        button {
+            background-color: var(--color-neon-blue);
+            color: var(--color-bg-primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        button:hover {
+            background-color: #4dffff;
+            box-shadow: 0 0 10px var(--color-neon-blue);
+        }
+        
+        .btn-red {
+            background-color: var(--color-neon-red);
+            color: white;
+        }
+        
+        .btn-red:hover {
+            background-color: #ff664d;
+            box-shadow: 0 0 10px var(--color-neon-red);
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background-color: #282828;
+            color: var(--color-neon-blue);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .collapsible-row:hover {
+            background-color: #282828;
+            cursor: pointer;
+        }
+
+        .detail-row {
+            background-color: #242424;
+            color: var(--color-text-dim);
+        }
+        
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* MULTIMEDIA */
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .thumbnail-item {
+            text-align: center;
+            border: 2px solid var(--color-border);
+            border-radius: 4px;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+        
+        .thumbnail-item.face-match {
+            border-color: var(--color-neon-red);
+            box-shadow: 0 0 8px var(--color-neon-red);
+        }
+        
+        .thumbnail-img {
+            width: 100%;
+            height: 100px;
+            background-color: #000;
+            border: 1px solid #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            color: var(--color-text-dim);
+        }
+        
+        /* SQL PLACEHOLDER */
+        .sql-placeholder {
+            background-color: #000;
+            color: #38a438; /* Green for code */
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-family: 'Consolas', monospace;
+            white-space: pre-wrap;
+            border: 1px solid #105010;
+            font-size: 0.9em;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<!-- D3 for network graph and heatmap helper -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="logo"><h2>Cyber Lens</h2></div>
+        <a class="nav-link active" onclick="showSection('dashboard')">Dashboard</a>
+        <a class="nav-link" onclick="showSection('queries')">Queries (NL)</a>
+        <a class="nav-link" onclick="showSection('cases')">Cases</a>
+        <a class="nav-link" onclick="showSection('reports')">Reports</a>
+        <a class="nav-link" onclick="showSection('alerts')">Alerts</a>
+        <a class="nav-link" onclick="showSection('multimedia')">Multimedia Intelligence</a>
+        <a class="nav-link" onclick="showSection('graphs')">Graphs & Summaries</a>
+        <a class="nav-link" onclick="showSection('settings')">Settings</a>
+    </div>
+
+    <div class="main-content">
+        
+        <section id="dashboard">
+            <h1 class="header-title">Home Dashboard Overview</h1>
+            
+            <div class="dashboard-grid">
+                <div class="summary-card">
+                    <h3>Active Cases</h3>
+                    <div class="metric" id="metric-active-cases">0</div>
+                </div>
+                <div class="summary-card">
+                    <h3>UFDRs Processed</h3>
+                    <div class="metric" id="metric-ufdr-processed">0</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Total AI Alerts</h3>
+                    <div class="metric" id="metric-total-alerts" style="color: var(--color-neon-red);">0</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Avg. Case Risk</h3>
+                    <div class="metric" id="metric-avg-risk">0%</div>
+                </div>
+            </div>
+
+            <div class="panel quick-ingest-panel">
+                <div class="panel-title" style="border-bottom: none;">🚀 Quick Ingest Device ID</div>
+                <form id="quick-ingest-form">
+                    <input type="text" id="quick-case-id" class="data-input" placeholder="Case ID (e.g., #601)" required style="width: 150px; margin-right: 10px; border-radius: 4px; border-color: var(--color-neon-blue);">
+                    <input type="text" id="quick-device-id" class="data-input" placeholder="Device/UFDR ID" required style="width: calc(100% - 280px); margin-right: 10px; border-radius: 4px; border-color: var(--color-neon-blue);">
+                    <button type="submit" style="width: 100px; padding: 10px;">Ingest</button>
+                </form>
+                <p id="quick-ingest-status" style="margin-top: 10px; color: var(--color-text-dim); font-size: 0.9em;">Use the 'Cases' section for detailed data assignments.</p>
+            </div>
+
+            <div class="risk-alerts-container" style="margin-top: 30px;">
+                <div class="panel">
+                    <div class="panel-title" style="color: var(--color-neon-red);">🔥 High-Risk Cases/Suspects (Simulated)</div>
+                    <div class="risk-list">
+                        <div class="risk-item"><span>Case #402 (Suspect J. Doe)</span><span class="risk-score">91%</span></div>
+                        <div class="risk-item"><span>Suspect Group Gamma</span><span class="risk-score">85%</span></div>
+                        <div class="risk-item"><span>Case #511 (Code Words Detected)</span><span class="risk-score">78%</span></div>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <div class="panel-title">🚨 AI Alerts & Early Warnings (Simulated)</div>
+                    <div class="alert-item"><strong>CRITICAL:</strong> New suspect identified via Cross-Case Face Match.</div>
+                    <div class="alert-item">WARNING: High volume of Foreign Calls detected in Case #402.</div>
+                    <div class="alert-item">INFO: Media Authenticity Check flagged 2 tampered images.</div>
+                </div>
+            </div>
+            
+           
+
+        </section>
+
+        <section id="queries" style="display: none;">
+            <h1 class="header-title">Natural Language Query Interface</h1>
+            
+            <div class="panel">
+                <input type="text" id="nl-query-input" class="query-box" placeholder="Example: 'Show me all chats between Person A and Person B that mention 'drop' or 'meet' in the last 30 days.'">
+                <button onclick="executeNLQuery()" style="margin-top: 15px; width: 100%;">Execute Query</button>
+                
+                <div class="panel ai-response" style="margin-top: 20px;">
+                    <div class="panel-title" style="border: none; color: var(--color-neon-blue);">AI Response & Data Output</div>
+                    <p id="query-response-message" style="color: var(--color-neon-blue);">AI: Waiting for input...</p>
+                    <div class="table-container">
+                        <table id="query-results-table">
+                            <thead><tr><th>Timestamp</th><th>Sender</th><th>Receiver</th><th>Message Excerpt</th></tr></thead>
+                            <tbody>
+                                </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" style="display: none;">
+            <h1 class="header-title">Case Management & Data Input</h1>
+            
+            <div class="form-grid panel">
+                <form id="ingestion-form">
+                    <div class="panel-title" style="border: none;">Add New UFDR Data / Assign to Case</div>
+                    
+                    <label for="case-id">Case ID:</label>
+                    <input type="text" id="input-case-id" name="case_id" class="data-input" placeholder="e.g., #601" required>
+                    
+                    <label for="suspect-name" style="margin-top: 10px;">Suspect Name / Device ID:</label>
+                    <input type="text" id="input-suspect-name" name="suspect_name" class="data-input" placeholder="e.g., Suspect X / Device A-118" required>
+                    
+                    <label for="data-type" style="margin-top: 10px;">Data Type:</label>
+                    <select id="input-data-type" name="data_type" class="data-input" required>
+                        <option value="chat_logs">Chat Logs</option>
+                        <option value="devices">Devices / Phones</option>
+                        <option value="images">Images / Media</option>
+                        <option value="calls">Call Records</option>
+                    </select>
+                    
+                    <label for="data-file" style="margin-top: 10px; color: var(--color-neon-blue); font-weight: bold;">Select UFDR/Raw Data File:</label>
+                    <input type="file" id="input-data-file" name="data_file" required>
+                    <button type="submit" style="margin-top: 20px; width: 100%;">Upload & Ingest UFDR Data (via Express)</button>
+                    <p id="ingestion-status" style="margin-top: 10px; color: var(--color-neon-blue);"></p>
+                </form>
+                
+                <div>
+                    <div class="panel-title" style="border: none;">AI-Generated Case Summary (Simulated)</div>
+                    <div class="panel" style="background-color: #000; border: 1px dashed var(--color-neon-blue); height: 250px; overflow-y: auto;">
+                        <h4 style="color: var(--color-neon-blue);">Case Summary Placeholder</h4>
+                        <p style="font-size: 0.9em; color: var(--color-text-dim);">
+                            This summary would be dynamically generated by the Express backend querying and aggregating data from the Chats, Calls, and Suspects tables.
+                            <br><br>
+                            Example: The term 'package drop' was detected 12 times in the last week of September across three different chat platforms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="table-container panel" style="margin-top: 30px;">
+                <div class="panel-title">All Active Cases (Simulated Data)</div>
+                <table>
+                    <thead><tr><th>Case ID</th><th>Status</th><th>Suspects</th><th>UFDRs</th><th>Risk</th><th>Details</th></tr></thead>
+                    <tbody id="case-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+       <section id="multimedia" style="display: none;">
+            <h1 class="header-title">Multimedia Intelligence Boost (Face Match)</h1>
+
+               <div class="panel">
+               <div class="panel-title" style="color: var(--color-neon-red);">Face Recognition – Upload & Match</div>
+
+        <!-- Upload Image -->
+        <input type="file" id="faceUpload" accept="image/*" class="data-input" style="margin-bottom:15px;">
+        <button onclick="runFaceRecognition()">Check Face Match</button>
+        <div id="geo-map" style="height:300px; margin-top:20px; display:none;"></div>
+
+
+        <!-- Result Text -->
+        <p id="match-result" style="margin-top:15px; font-size:1.2em;"></p>
+        <img id="matched-photo" style="width:180px; border-radius:10px; margin-top:15px; display:none;">
+        <p id="linked-cases" style="font-size:1.1em; margin-top:10px;"></p>2024
+    </div>
+</section>
+
+    <section id="reports" style="display: none;">
+        <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 20px; }
+    h1 { color: #1b2a49; text-align: center; }
+    .panel { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input[type=file], select { margin-top: 5px; padding: 6px; width: 100%; max-width: 400px; }
+    button { margin-top: 15px; padding: 10px 18px; background: #1b2a49; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #334466; }
+    #report-content { display: none; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    #report-content h2 { margin-top: 0; color: #1b2a49; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 8px; text-align: left; }
+</style>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+
+
+
+<div class="panel">
+    <label>Select Case:</label>
+    <select id="case-select">
+        <option value="">-- Choose Case --</option>
+        <option value="#402">#402 - J. Doe</option>
+        <option value="#511">#511 - Group Gamma</option>
+        <option value="#601">#601 - Device A118</option>
+    </select>
+
+    <label>Upload Dataset (CSV):</label>
+    <input type="file" id="dataset-upload" accept=".csv">
+
+    <button id="generate-report">Generate Report</button>
+    <button id="export-pdf">Export PDF</button>
+</div>
+
+<div id="report-content" style="color: #000;">
+    <h2>Chargesheet Report</h2>
+    <p><strong>Case ID:</strong> <span id="report-case-id"></span></p>
+    <p><strong>Analysis Summary:</strong></p>
+    <p id="report-summary"></p>
+
+    <h3>Dataset Overview:</h3>
+    <table id="report-table" style="color: #000;">
+        <thead style="color: #000;">
+            <tr><th>Column 1</th><th>Column 2</th><th>Column 3</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script>
+    
+  
+
+
+const caseSelect = document.getElementById('case-select');
+const datasetUpload = document.getElementById('dataset-upload');
+const generateBtn = document.getElementById('generate-report');
+const exportBtn = document.getElementById('export-pdf');
+const reportContent = document.getElementById('report-content');
+const reportCaseId = document.getElementById('report-case-id');
+const reportSummary = document.getElementById('report-summary');
+const reportTableBody = document.querySelector('#report-table tbody');
+
+let parsedData = [];
+
+// Function: Parse CSV
+function parseCSV(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const text = e.target.result;
+            const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
+            const data = lines.map(line => line.split(','));
+            resolve(data);
+        };
+        reader.onerror = reject;
+        reader.readAsText(file);
+    });
+}
+
+// Function: Generate AI summary
+function generateAISummary(caseId, data) {
+    // Example: count keyword occurrences
+    const highRiskWords = ['package', 'drop', 'money', 'meet', 'transfer'];
+    let totalHits = 0;
+    highRiskWords.forEach(word => {
+        data.forEach(row => {
+            row.forEach(cell => {
+                if(cell.toLowerCase().includes(word)) totalHits++;
+            });
+        });
+    });
+
+    const suspects = ['John Doe', 'Kevin Smith']; // Example for demo
+    return `The term "package drop" was detected ${totalHits} times across chat logs. 
+3 different platforms show the same keyword around last week of September.
+Two suspects (${suspects.join(', ')}) communicated ${totalHits} times with high-risk words.`;
+}
+
+// Event: Generate Report
+generateBtn.addEventListener('click', async () => {
+    const caseId = caseSelect.value;
+    if(!caseId){
+        alert('Please select a case.');
+        return;
+    }
+    if(!datasetUpload.files[0]){
+        alert('Please upload a CSV dataset.');
+        return;
+    }
+
+    parsedData = await parseCSV(datasetUpload.files[0]);
+
+    // Fill report
+    reportCaseId.textContent = caseId;
+    reportSummary.textContent = generateAISummary(caseId, parsedData);
+
+    // Fill table
+    reportTableBody.innerHTML = '';
+    parsedData.forEach(row => {
+        const tr = document.createElement('tr');
+        row.forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+            tr.appendChild(td);
+        });
+        reportTableBody.appendChild(tr);
+    });
+
+    reportContent.style.display = 'block';
+});
+
+// Event: Export PDF
+exportBtn.addEventListener('click', async () => {
+    if(reportContent.style.display === 'none'){
+        alert('Please generate the report first.');
+        return;
+    }
+
+    const canvas = await html2canvas(reportContent, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jspdf.jsPDF('p','pt','a4');
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = pageWidth - 40;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = 20;
+
+    pdf.addImage(imgData, 'PNG', 20, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight - 40;
+
+    while(heightLeft > 0){
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 20, 20 - heightLeft, imgWidth, imgHeight);
+        heightLeft -= pageHeight - 40;
+    }
+
+    pdf.save('Chargesheet_Report.pdf');
+});
+</script>
+       
+
+    <script>
+let datasetUploaded = false;
+
+document.getElementById('uploadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('dataset', document.getElementById('dataset').files[0]);
+
+    fetch('/upload_dataset', { method: 'POST', body: formData })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        datasetUploaded = true;
+    });
+});
+
+document.getElementById('generateReportBtn').addEventListener('click', function(){
+    if (!datasetUploaded) {
+        alert('Please upload a dataset first!');
+        return;
+    }
+
+    fetch('/generate_report', { method: 'POST' })
+    .then(res => res.blob())
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'UFDR_Report.pdf';
+        a.click();
+    });
+});
+</script>
+
+        </section>
+            <!-- Alerts (the section you asked to replace) -->
+    <section id="alerts" class="page" style="display:none">
+      <h1 class="header-title">AI Alerts & Notifications Log</h1>
+
+      <div class="panel">
+        <div style="font-weight:700;margin-bottom:8px">Create New Alert</div>
+        <form id="alert-form" class="panel" style="padding:12px;display:flex;flex-direction:column;gap:10px">
+          <div class="form-row">
+            <div style="flex:1;min-width:180px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Date & Time</label>
+              <input id="alert-date" type="datetime-local" class="data-input" />
+            </div>
+            <div style="flex:1;min-width:140px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Case ID</label>
+              <input id="alert-case" type="text" class="data-input" placeholder="C402 or #402" />
+            </div>
+            <div style="flex:1;min-width:140px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Alert Type</label>
+              <select id="alert-type" class="data-input">
+                <option>CRITICAL</option><option>WARNING</option><option>INFO</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div style="flex:1;min-width:140px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Rate Label</label>
+              <select id="alert-rate-label" class="data-input"><option>High</option><option>Medium</option><option>Low</option></select>
+            </div>
+            <div style="flex:1;min-width:140px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Percentage</label>
+              <input id="alert-rate-percent" type="number" min="0" max="100" class="data-input" placeholder="e.g. 91" />
+            </div>
+            <div style="flex:1;min-width:140px">
+              <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Reported By</label>
+              <input id="alert-reporter" class="data-input" placeholder="Analyst Name" />
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.85em;color:var(--dim);margin-bottom:6px">Message</label>
+            <textarea id="alert-message" class="data-input" rows="3" placeholder="Short description..."></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center">
+            <button id="alert-submit" type="button" class="btn">Add Alert</button>
+            <button id="alert-clear" type="button" class="btn btn-danger">Clear</button>
+            <div style="flex:1;color:var(--dim);font-size:0.9em">New alerts appear in Recent Alerts below and will be persisted to the server.</div>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div style="font-weight:700;margin-bottom:8px">Recent Alerts</div>
+        <div id="alerts-list">
+          <!-- populated by client script -->
+        </div>
+      </div>
+    </section>
+        <section id="graphs" style="display:none;">
+  <h1 class="header-title">Graphs & Summaries</h1>
+
+  <div class="panel" style="margin-bottom:16px; display:flex; gap:12px; align-items:center;">
+    <label style="min-width:90px; color:var(--color-text-dim);">Select Case</label>
+    <select id="case-select" class="data-input" style="max-width:300px;">
+        <option>CASE-402</option>
+        <option>#CASE-876</option>
+        <option>##CRIME 2023</option>
+    </select>
+    <button id="load-case-btn" class="btn" style="margin-left:12px;">Load Case</button>
+    <div style="margin-left:auto;color:var(--color-text-dim);font-size:0.9em">Click a card to open full chart</div>
+  </div>
+
+  <!-- CARDS GRID -->
+  <div id="cards-grid" class="panel" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+    <!-- Cards will be injected here -->
+  </div>
+
+  <!-- CHART AREA (small preview + optional main view) -->
+  <div id="chart-preview-area" class="panel" style="margin-top:16px;">
+    <div id="chart-placeholder" style="min-height:260px; display:flex; align-items:center; justify-content:center; color:var(--color-text-dim);">
+      Select a card to open the chart.
+    </div>
+  </div>
+
+  <!-- SUMMARIZE SECTION -->
+  <div id="summarize-panel" class="panel" style="margin-top:16px;">
+    <div class="panel-title">Summarize</div>
+    <div id="summary-cards" style="display:flex; gap:12px; flex-wrap:wrap;">
+      <!-- summary cards injected here -->
+    </div>
+  </div>
+</section>
+<!-- Modal for full-screen charts -->
+<div id="chart-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;z-index:9999;">
+  <div style="width:90%;max-width:1200px;background:var(--color-bg-secondary);padding:18px;border-radius:8px;position:relative;">
+    <button id="modal-close" style="position:absolute;right:12px;top:12px;" class="btn">Close</button>
+    <div id="modal-chart-container" style="min-height:420px;">
+      <!-- Canvas or SVG injected here -->
+    </div>
+  </div>
+</div>
+        <!--settings-->
+    <section id="settings" style="display:none;">
+    <h1 class="header-title">Settings</h1>
+
+    <div style="display:flex;gap:20px;">
+
+        <!-- LEFT SETTINGS MENU -->
+        <div class="panel" style="width:260px;">
+            <div class="panel-title">Menu</div>
+
+            <div class="settings-menu-item" onclick="openSettingsTab('profile', this)">👤 Profile</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('privacy', this)">🔐 Privacy & Security</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('terms', this)">📜 Terms of Service</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('theme', this)">🌓 Theme</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('accounts', this)">👥 Manage Accounts</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('about', this)">ℹ️ About Us</div>
+            <div class="settings-menu-item" onclick="openSettingsTab('help', this)">❓ Help</div>
+        </div>
+
+        <!-- RIGHT-SIDE CONTENT LOADED DYNAMICALLY -->
+        <div id="settings-content" class="panel" style="flex:1;">
+            <p style="color:var(--color-text-dim);">Select an option from the menu.</p>
+        </div>
+    </div>
+</section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script>
+        // --- MOCK DATA STORE ---
+        let mockData = {
+            active_cases: 1,
+            ufdr_processed: 5,
+            critical_alerts: 3,
+            avg_risk: 86,
+            cases: [
+                { id: '#402', status: 'Investigating', suspects: 'J. Doe, K. Smith', ufdrs: 5, risk: '91%', notes: 'High-priority, foreign call activity.' },
+            ],
+            face_matches: [
+                { case_id: '#402', face_embedding: 'A1B2C3D4E5F6' },
+                { case_id: '#511', face_embedding: 'A1B2C3D4E5F6' },
+                { case_id: '#402', face_embedding: 'F9E8D7C6B5A4' }
+            ]
+        };
+
+        // --- JAVASCRIPT FOR FRONTEND INTERACTIVITY & BACKEND COMMUNICATION ---
+        
+        // --- Core Navigation ---
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.nav-link[onclick*='${sectionId}']`).classList.add('active');
+
+            // Trigger data fetch/render when specific sections are shown
+            if (sectionId === 'dashboard') fetchDashboardMetrics();
+            if (sectionId === 'cases') renderCaseTable();
+            if (sectionId === 'multimedia') fetchFaceMatches();
+        }
+        
+        function toggleDetails(row) {
+            const detailRow = row.nextElementSibling;
+            if (detailRow && detailRow.classList.contains('detail-row')) {
+                const isHidden = detailRow.style.display === 'none' || detailRow.style.display === '';
+                detailRow.style.display = isHidden ? 'table-row' : 'none';
+                row.querySelector('td:last-child').textContent = isHidden ? '[-]' : '[+]';
+            }
+        }
+        
+        // --- Dashboard Data Render (Using Mock Data) ---
+        function fetchDashboardMetrics() {
+            setTimeout(() => {
+                document.getElementById('metric-active-cases').textContent = mockData.active_cases;
+                document.getElementById('metric-ufdr-processed').textContent = mockData.ufdr_processed;
+                document.getElementById('metric-total-alerts').textContent = mockData.critical_alerts;
+                document.getElementById('metric-avg-risk').textContent = `${mockData.avg_risk}%`;
+            }, 100);
+        }
+
+        // --- Render Case Table (Using Mock Data) ---
+        function renderCaseTable() {
+            const tableBody = document.getElementById('case-table-body');
+            tableBody.innerHTML = ''; 
+
+            mockData.cases.forEach(c => {
+                const row = document.createElement('tr');
+                row.className = 'collapsible-row';
+                row.setAttribute('onclick', 'toggleDetails(this)');
+                row.innerHTML = `
+                    <td>${c.id}</td>
+                    <td>${c.status}</td>
+                    <td>${c.suspects}</td>
+                    <td>${c.ufdrs}</td>
+                    <td style="color: var(--color-neon-red);">${c.risk}</td>
+                    <td>[+]</td>
+                `;
+
+                const detailRow = document.createElement('tr');
+                detailRow.className = 'detail-row';
+                detailRow.style.display = 'none';
+                detailRow.innerHTML = `<td colspan="6">
+                    <p>Case Notes: ${c.notes || 'No notes available.'} SQL Placeholder: \SELECT * FROM Suspects WHERE CaseID = '${c.id}';\</p>
+                </td>`;
+                
+                tableBody.appendChild(row);
+                tableBody.appendChild(detailRow);
+            });
+        }
+        
+        // --- NL Query Execution (Mocked) ---
+        function executeNLQuery() {
+            const query = document.getElementById('nl-query-input').value;
+            const statusMessage = document.getElementById('query-response-message');
+            const tableBody = document.querySelector('#query-results-table tbody');
+
+            if (!query.trim()) {
+                statusMessage.textContent = 'AI: Please enter a query.';
+                tableBody.innerHTML = '';
+                return;
+            }
+
+            statusMessage.textContent = 'AI: Processing query, please wait... (Simulated)';
+            tableBody.innerHTML = ''; 
+
+            setTimeout(() => {
+                const mockResults = [
+                    { timestamp: new Date().getTime() - 86400000, sender: 'J. Doe', receiver: 'K. Smith', message: 'Hey, I will make the drop at the usual time. Don\'t forget.' },
+                    { timestamp: new Date().getTime() - 172800000, sender: 'K. Smith', receiver: 'J. Doe', message: 'Confirmed. Should we meet afterwards?' },
+                ];
+
+                statusMessage.textContent = `AI: Query executed successfully. Found ${mockResults.length} relevant chat logs.`;
+                
+                if (mockResults.length > 0) {
+                    mockResults.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${new Date(row.timestamp).toLocaleString()}</td>
+                            <td>${row.sender}</td>
+                            <td>${row.receiver}</td>
+                            <td>${row.message.substring(0, 50)}...</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="4">No results found matching your query criteria.</td></tr>';
+                }
+
+            }, 500); 
+        }
+        
+        // --- Quick Data Ingestion Form Submission (Simulated - Dashboard) ---
+        document.getElementById('quick-ingest-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const caseId = document.getElementById('quick-case-id').value.trim();
+            const deviceId = document.getElementById('quick-device-id').value.trim();
+            const status = document.getElementById('quick-ingest-status');
+            
+            status.style.color = 'var(--color-neon-blue)';
+            status.textContent = `Ingesting device ${deviceId}... (Simulated)`;
+            
+            setTimeout(() => {
+                if (!caseId || !deviceId) {
+                    status.style.color = 'var(--color-neon-red)';
+                    status.textContent = `❌ Ingestion Failed: Case ID and Device ID are required.`;
+                    return;
+                }
+
+                mockData.ufdr_processed += 1;
+                let caseObj = mockData.cases.find(c => c.id === caseId);
+
+                if (!caseObj) {
+                    mockData.active_cases += 1;
+                    mockData.cases.push({
+                        id: caseId, 
+                        status: 'New UFDR Added', 
+                        suspects: deviceId, 
+                        ufdrs: 1, 
+                        risk: '50%', 
+                        notes: `Quick ingest of device: ${deviceId}.`
+                    });
+                } else {
+                    caseObj.ufdrs += 1;
+                    if (!caseObj.suspects.includes(deviceId)) {
+                        caseObj.suspects += `, ${deviceId}`;
+                    }
+                    caseObj.status = 'New UFDR Added';
+                }
+
+                status.style.color = 'var(--color-neon-blue)';
+                status.innerHTML = `✅ **Device Ingested!** UFDR ${deviceId} added to Case **${caseId}**.`;
+                document.getElementById('quick-case-id').value = '';
+                document.getElementById('quick-device-id').value = '';
+
+                fetchDashboardMetrics();
+            }, 500);
+        });
+
+        // --- Data Ingestion Form Submission (Simulated - Cases) ---
+        document.getElementById('ingestion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const caseId = document.getElementById('input-case-id').value.trim();
+            const suspectName = document.getElementById('input-suspect-name').value.trim();
+            const dataType = document.getElementById('input-data-type').options[document.getElementById('input-data-type').selectedIndex].text;
+            const dataFile = document.getElementById('input-data-file').files[0]; // Get the selected file object
+            const status = document.getElementById('ingestion-status');
+            
+            status.textContent = 'Ingesting data... (Simulated Server Process)';
+            
+            setTimeout(() => {
+                if (!caseId || !suspectName || !dataType || !dataFile) {
+                    status.style.color = 'var(--color-neon-red)';
+                    status.textContent = `❌ Ingestion Failed: All fields AND a **data file** are required.`;
+                    return;
+                }
+
+                // --- DATA CAPTURE AND MOCK UPDATE ---
+                mockData.ufdr_processed += 1;
+                let caseObj = mockData.cases.find(c => c.id === caseId);
+
+                if (!caseObj) {
+                    mockData.active_cases += 1;
+                    mockData.cases.push({
+                        id: caseId, 
+                        status: 'New Data Ingested', 
+                        suspects: suspectName, 
+                        ufdrs: 1, 
+                        risk: '50%', 
+                        notes: `Initial data ingestion: ${dataType} for ${suspectName}.`
+                    });
+                } else {
+                    caseObj.ufdrs += 1;
+                    if (!caseObj.suspects.includes(suspectName)) {
+                        caseObj.suspects += `, ${suspectName}`;
+                    }
+                    caseObj.status = 'Data Added';
+                }
+                
+                status.style.color = 'var(--color-neon-blue)';
+                status.innerHTML = `✅ **Data Ingested!** Case **${caseId}** updated with **${dataType}** for **${suspectName}**. File: **${dataFile.name}**`;
+                document.getElementById('input-case-id').value = '';
+                document.getElementById('input-suspect-name').value = '';
+                document.getElementById('input-data-file').value = '';
+                
+                fetchDashboardMetrics();
+                renderCaseTable();
+
+            }, 800);
+        });
+
+       
+    // Initialize alerts on load
+    document.addEventListener('DOMContentLoaded', renderAlerts);
+</script>
+<section id="reports">
+
+</section>
+<section id="alerts" style="display:block; padding:10px;">
+  <h2>AI Alerts & Notifications Log</h2>
+
+  <form id="alert-form" style="margin-bottom:15px;">
+    <label>Date & Time</label>
+    <input id="alert-date" type="datetime-local" required><br>
+
+    <label>Case ID</label>
+    <input id="alert-case" type="text" placeholder="C402" required><br>
+
+    <label>Alert Type</label>
+    <select id="alert-type">
+      <option>CRITICAL</option>
+      <option>WARNING</option>
+      <option>INFO</option>
+    </select><br>
+
+    <label>Reported By</label>
+    <input id="alert-reporter" type="text" placeholder="Analyst Name" required><br>
+
+    <label>Message</label>
+    <textarea id="alert-message" rows="2" placeholder="Short description" required></textarea><br>
+
+    <button type="button" id="alert-submit">Add Alert</button>
+    <button type="button" id="alert-clear">Clear</button>
+  </form>
+
+  <div id="alerts-list">
+    <p style="color:gray;">No alerts yet.</p>
+  </div>
+
+  <p>Total Alerts: <span id="metric-total-alerts">0</span></p>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const alertData = [];
+
+    const form = document.getElementById('alert-form');
+    const list = document.getElementById('alerts-list');
+    const metricAlerts = document.getElementById('metric-total-alerts');
+
+    function renderAlerts() {
+      if (!list) return;
+
+      list.innerHTML = '';
+      if (alertData.length === 0) {
+        list.innerHTML = '<p style="color:gray;">No alerts yet.</p>';
+        if(metricAlerts) metricAlerts.textContent = 0;
+        return;
+      }
+
+      alertData.slice().reverse().forEach(alert => {
+        const div = document.createElement('div');
+        div.style.border = '1px solid #ccc';
+        div.style.padding = '5px';
+        div.style.marginBottom = '5px';
+        div.innerHTML = `
+          <strong>${alert.type}</strong>: ${alert.message}<br>
+          <small>Case: ${alert.caseId} | Reporter: ${alert.reporter} | ${new Date(alert.date).toLocaleString()}</small>
+        `;
+        list.appendChild(div);
+      });
+
+      if (metricAlerts) metricAlerts.textContent = alertData.length;
+    }
+
+    document.getElementById('alert-submit').addEventListener('click', () => {
+      const date = document.getElementById('alert-date').value;
+      const caseId = document.getElementById('alert-case').value.trim();
+      const type = document.getElementById('alert-type').value;
+      const reporter = document.getElementById('alert-reporter').value.trim();
+      const message = document.getElementById('alert-message').value.trim();
+
+      if (!date || !caseId || !reporter || !message) {
+        alert('Please fill all fields.');
+        return;
+      }
+
+      alertData.push({ date, caseId, type, reporter, message });
+
+      renderAlerts();
+      form.reset();
+    });
+
+    document.getElementById('alert-clear').addEventListener('click', () => {
+      form.reset();
+    });
+
+    renderAlerts();
+  });
+  // --- Multimedia Face Matches (Mocked) ---
+        function fetchFaceMatches() {
+            const grid = document.getElementById('face-match-grid');
+            grid.innerHTML = '<p style="color: var(--color-text-dim);">Loading cross-case face matches... (Simulated)</p>';
+            
+            setTimeout(() => {
+                grid.innerHTML = ''; 
+
+                if (mockData.face_matches.length > 0) {
+                    const matches = {};
+                    mockData.face_matches.forEach(item => {
+                        const key = item.face_embedding.substring(0, 10); 
+                        if (!matches[key]) matches[key] = [];
+                        matches[key].push(item);
+                    });
+
+                    let renderedCount = 0;
+                    for (const key in matches) {
+                        const item = matches[key][0];
+                        const caseCount = matches[key].map(i => i.case_id).filter((v, i, a) => a.indexOf(v) === i).length;
+
+                        const div = document.createElement('div');
+                        const isCrossCase = caseCount > 1;
+                        div.className = `thumbnail-item ${isCrossCase ? 'face-match' : ''}`;
+                        div.innerHTML = `
+                            <div class="thumbnail-img" style="${isCrossCase ? 'border-color: var(--color-neon-red);' : ''}">FACE ID: ${key}</div>
+                            <small style="color: ${isCrossCase ? 'var(--color-neon-red)' : 'var(--color-text-dim)'};">${isCrossCase ? 'CRITICAL MATCH' : 'Single Case Match'}</small>
+                            <br><small>Linked Cases: ${caseCount}</small>
+                        `;
+                        grid.appendChild(div);
+                        renderedCount++;
+                        if (renderedCount >= 5) break; 
+                    }
+                } else {
+                    grid.innerHTML = '<p style="color: var(--color-text-dim);">No cross-case face matches currently detected.</p>';
+                }
+            }, 200); 
+        }
+        // Initialize dashboard view on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('dashboard');
+        });
+        // PROFILE SAVE
+        /* -------------------------- */
+/*   LEFT MENU → LOAD TABS    */
+/* -------------------------- */
+function openSettingsTab(tab, el) {
+
+    // Remove highlight
+    document.querySelectorAll(".settings-menu-item")
+        .forEach(i => i.classList.remove("active"));
+    el.classList.add("active");
+
+    let html = "";
+
+    /* ---------------- PROFILE ---------------- */
+    if (tab === "profile") {
+        html = `
+        <div class="panel-title">👤 Profile</div>
+
+        <div style="display:flex;align-items:center;gap:20px;">
+            <img id="profile-photo-preview" src="https://via.placeholder.com/80"
+                style="width:80px;height:80px;border-radius:50%;border:2px solid var(--color-neon-blue);">
+
+            <div>
+                <label>Change Photo</label>
+                <input type="file" id="profile-photo" class="data-input" accept="image/*">
+            </div>
+        </div>
+
+        <label style="margin-top:10px;">Full Name</label>
+        <input id="profile-name" class="data-input">
+
+        <label style="margin-top:10px;">Email</label>
+        <input id="profile-email" class="data-input">
+
+        <label style="margin-top:10px;">Phone Number</label>
+        <input id="profile-phone" class="data-input">
+
+        <button onclick="saveProfile()" style="margin-top:15px;">Save Profile</button>
+        <p id="profile-status"></p>
+        `;
+    }
+
+    /* ---------------- PRIVACY ---------------- */
+    if (tab === "privacy") {
+        html = `
+        <div class="panel-title">🔐 Privacy & Security</div>
+
+        <label>Current Password</label>
+        <input id="old-pass" type="password" class="data-input">
+
+        <label>New Password</label>
+        <input id="new-pass" type="password" class="data-input">
+
+        <label>Confirm Password</label>
+        <input id="confirm-pass" type="password" class="data-input">
+
+        <button onclick="changePassword()">Change Password</button>
+        <p id="pass-status"></p>
+        `;
+    }
+
+    /* ---------------- TERMS ---------------- */
+    if (tab === "terms") {
+        html = `
+        <div class="panel-title">📜 Terms of Service</div>
+        <p style="color:var(--color-text-dim);font-size:0.9em;">
+            • This dashboard is for forensic investigation.<br>
+            • Only authorized users may access it.<br>
+            • AI predictions must be human-verified.<br>
+            • Misuse of data is strictly prohibited.<br>
+            • All activity may be logged.<br>
+        </p>`;
+    }
+
+    /* ---------------- THEME ---------------- */
+    if (tab === "theme") {
+        html = `
+        <div class="panel-title">🌓 Theme</div>
+
+        <label>Select Theme</label>
+        <select id="theme-select" class="data-input">
+            <option value="dark">Cyber Dark</option>
+            <option value="light">Light Mode</option>
+            <option value="blue">Blue Forensic</option>
+        </select>
+
+        <button onclick="applyTheme()">Apply Theme</button>
+        `;
+    }
+
+    /* ---------------- ACCOUNTS ---------------- */
+    if (tab === "accounts") {
+        html = `
+        <div class="panel-title">👥 Manage Accounts</div>
+
+        <label>Switch Account</label>
+        <select id="account-switch" class="data-input">
+            <option>Analyst – 001</option>
+            <option>Investigator – 721</option>
+            <option>Admin – Control</option>
+        </select>
+
+        <button style="margin-top:10px;">Switch</button>
+        <button onclick="logoutUser()" class="btn-red" style="margin-top:10px;">Logout</button>
+
+        <p id="logout-status"></p>
+        `;
+    }
+
+    /* ---------------- ABOUT ---------------- */
+    if (tab === "about") {
+        html = `
+        <div class="panel-title">i About Us</div>
+
+        <p style="color:var(--color-text-dim);font-size:0.9em;">
+            Aethelred AI is a digital forensics intelligence platform that uses ML
+            to analyze UFDR data, chats, calls, images & metadata.
+        </p>`;
+    }
+
+    /* ---------------- HELP ---------------- */
+    if (tab === "help") {
+        html = `
+        <div class="panel-title">❓ Help</div>
+
+        <p style="color:var(--color-text-dim);font-size:0.9em;">
+            • Upload UFDR → Cases > Upload<br>
+            • Generate PDF → Reports<br>
+            • Alerts → AI scanning<br>
+            • Login issues → Logout & re-login<br>
+            • Support → support@aethelred.com
+        </p>`;
+    }
+
+    // Insert HTML
+    document.getElementById("settings-content").innerHTML = html;
+
+    // IMPORTANT: Load profile AFTER HTML exists (fixes your issue)
+    if (tab === "profile") {
+        loadProfile();
+    }
+}
+
+/* ----------------------------- */
+/*        PROFILE SAVE           */
+/* ----------------------------- */
+function saveProfile() {
+    const name = document.getElementById("profile-name").value;
+    const email = document.getElementById("profile-email").value;
+    const phone = document.getElementById("profile-phone").value;
+
+    let photoFile = document.getElementById("profile-photo").files[0];
+
+    if (photoFile) {
+        let reader = new FileReader();
+        reader.onload = e => {
+            document.getElementById("profile-photo-preview").src = e.target.result;
+            localStorage.setItem("profile-photo", e.target.result);
+        };
+        reader.readAsDataURL(photoFile);
+    }
+
+    localStorage.setItem("profile", JSON.stringify({ name, email, phone }));
+
+    document.getElementById("profile-status").textContent = "Profile updated!";
+}
+
+/* LOAD PROFILE WHEN PROFILE TAB OPENS */
+function loadProfile() {
+    const p = JSON.parse(localStorage.getItem("profile"));
+    const photo = localStorage.getItem("profile-photo");
+
+    if (p) {
+        document.getElementById("profile-name").value = p.name;
+        document.getElementById("profile-email").value = p.email;
+        document.getElementById("profile-phone").value = p.phone;
+    }
+
+    if (photo) {
+        document.getElementById("profile-photo-preview").src = photo;
+    }
+}
+
+/* ----------------------------- */
+/*      CHANGE PASSWORD          */
+/* ----------------------------- */
+function changePassword() {
+    const n = document.getElementById("new-pass").value;
+    const c = document.getElementById("confirm-pass").value;
+
+    document.getElementById("pass-status").textContent =
+        n !== c ? "❌ Passwords do not match" : "✅ Password changed!";
+}
+
+/* ----------------------------- */
+/*         THEME ENGINE          */
+/* ----------------------------- */
+function applyTheme() {
+    const theme = document.getElementById("theme-select").value;
+
+    document.body.classList.remove("light-theme", "blue-theme");
+
+    if (theme === "light") document.body.classList.add("light-theme");
+    if (theme === "blue") document.body.classList.add("blue-theme");
+
+    localStorage.setItem("user-theme", theme);
+}
+
+/* LOAD SAVED THEME WHEN SITE OPENS */
+document.addEventListener("DOMContentLoaded", () => {
+    const theme = localStorage.getItem("user-theme");
+    if (theme === "light") document.body.classList.add("light-theme");
+    if (theme === "blue") document.body.classList.add("blue-theme");
+});
+
+
+/* ----------------------------- */
+/*         LOGOUT USER           */
+/* ----------------------------- */
+function logoutUser() {
+    document.getElementById("logout-status").textContent = "User logged out!";
+}
+// ----------------- Graphs & Summarize: logic -----------------
+
+// Cases sample (replace with real server-driven list)
+const CASES = [
+  { id: '#402', label: 'Case #402 - J. Doe' },
+  { id: '#511', label: 'Case #511 - Group Gamma' },
+  { id: '#601', label: 'Case #601 - Device A118' }
+];
+
+// Graph definitions (order and metadata)
+const GRAPH_DEFS = [
+  { key: 'line', title: 'Chat & Call Frequency (Line)' , desc: 'Hourly/day frequency of chats & calls' },
+  { key: 'bar', title: 'Top Contacts (Bar)', desc: 'Most contacted numbers/people' },
+  { key: 'pie', title: 'Message Type Distribution (Pie)', desc: 'Messages / Media / Links / Voice / Deleted' },
+  { key: 'heat', title: 'Keyword Heatmap', desc: 'Suspicious keywords frequency' },
+  { key: 'prob', title: 'Suspicion Probability', desc: 'Probability distribution of flagged messages' },
+  { key: 'radar', title: 'Activity Radar', desc: 'Hour & day activity pattern and gaps' },
+  { key: 'network', title: 'Contact Network', desc: 'Criminal networking graph' }
+];
+
+// Chart instances (to destroy when re-opening)
+const CHARTS = {};
+
+// Helper: generate mock data for a case
+function generateMockData(caseId) {
+  // Seed using caseId for small determinism
+  const seed = caseId.split('').reduce((s,c)=>s + c.charCodeAt(0), 0);
+  const rand = (n)=> Math.abs(Math.sin(seed + n)*10000) % 1;
+
+  // 1) line: last 30 days frequency for chats and calls
+  const days = Array.from({length:30}, (_,i)=> {
+    const date = new Date();
+    date.setDate(date.getDate()- (29-i));
+    return date.toISOString().slice(0,10);
+  });
+  const chats = days.map((d,i)=>Math.round(10 + rand(i)*30));
+  const calls = days.map((d,i)=>Math.round(5 + rand(i+5)*20));
+
+  // 2) contacts
+  const contacts = Array.from({length:8}, (_,i)=>({
+    name: `Contact ${i+1}`,
+    count: Math.round(10 + rand(i+10)*80)
+  })).sort((a,b)=>b.count - a.count);
+
+  // 3) message types
+  const types = {
+    messages: Math.round(200 + rand(1)*200),
+    media: Math.round(20 + rand(2)*80),
+    links: Math.round(5 + rand(3)*30),
+    voice: Math.round(2 + rand(4)*20),
+    deleted: Math.round(1 + rand(5)*10)
+  };
+
+  // 4) suspicious keywords counts (heatmap)
+  const keywords = ['drop','meet','package','money','warehouse','police','transfer','burn'];
+  const keywordCounts = keywords.map((k,i)=>Math.round(rand(i+2)*20));
+
+  // 5) per-message probability distribution (0..100) simulated
+  const probBuckets = Array.from({length:5}, (_,i)=>Math.round(rand(i+7)*100));
+
+  // 6) radar: activity per hour (24) and per day (7)
+  const hours = Array.from({length:24}, (_,i)=> Math.round(rand(i+11)*20));
+  const daysOfWeek = Array.from({length:7}, (_,i)=> Math.round(rand(i+20)*80));
+  // missing chat times (gaps) as array of hours with low activity
+  const missingHours = hours.map((v,i)=> v < 3 ? i : -1).filter(v=>v>=0);
+
+  // 7) network: nodes and links
+  const nodes = [{id: caseId, group: 1}].concat(contacts.slice(0,6).map((c,i)=>({ id: c.name, group: 2 })));
+  const links = contacts.slice(0,6).map((c,i)=>({ source: caseId, target: c.name, weight: c.count }));
+
+  return {
+    days, chats, calls, contacts, types, keywords, keywordCounts, probBuckets, hours, daysOfWeek, missingHours, nodes, links
+  };
+}
+
+// Render cards grid
+function renderCards() {
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  for (const g of GRAPH_DEFS) {
+    const card = document.createElement('div');
+    card.className = 'graph-card';
+    card.dataset.key = g.key;
+    card.innerHTML = `<h4>${g.title}</h4><p>${g.desc}</p><div class="small-chart" id="small-${g.key}"></div>`;
+    card.onclick = ()=> openChartModal(g.key);
+    grid.appendChild(card);
+  }
+}
+
+// Populate case select dropdown
+function populateCaseSelect() {
+  const sel = document.getElementById('case-select');
+  sel.innerHTML = '';
+  for (const c of CASES) {
+    const o = document.createElement('option');
+    o.value = c.id; o.textContent = c.label;
+    sel.appendChild(o);
+  }
+}
+
+// Load a selected case and render previews
+function loadCase() {
+  const caseId = document.getElementById('case-select').value;
+  const data = generateMockData(caseId);
+
+  // show small previews (sparklines) inside cards using Chart.js (small)
+  GRAPH_DEFS.forEach(g=>{
+    const el = document.getElementById(`small-${g.key}`);
+    if (!el) return;
+    el.innerHTML = '';
+    const canvas = document.createElement('canvas');
+    canvas.width = el.clientWidth;
+    canvas.height = el.clientHeight;
+    el.appendChild(canvas);
+    // choose small-preview type
+    if (g.key === 'line') {
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: data.days.slice(-10), datasets:[
+          { label:'chats', data: data.chats.slice(-10), tension:0.3, fill:false },
+          { label:'calls', data: data.calls.slice(-10), tension:0.3, fill:false }
+        ]},
+        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}}}
+      });
+    } else if (g.key === 'bar') {
+      new Chart(canvas.getContext('2d'), {
+        type:'bar',
+        data:{ labels: data.contacts.slice(0,4).map(c=>c.name), datasets:[{ data: data.contacts.slice(0,4).map(c=>c.count) }]},
+        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}}}
+      });
+    } else if (g.key === 'pie') {
+      new Chart(canvas.getContext('2d'), {
+        type:'doughnut',
+        data:{ labels: Object.keys(data.types), datasets:[{ data: Object.values(data.types) }] },
+        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}}
+      });
+    } else {
+      // generic tiny sparkline
+      const vals = (g.key==='heat')? data.keywordCounts : (g.key==='prob')? data.probBuckets : data.hours.slice(0,6);
+      new Chart(canvas.getContext('2d'), {
+        type:'line',
+        data:{ labels: vals.map((_,i)=>i+1), datasets:[{ data: vals, tension:0.4, fill:true }]},
+        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{display:false}, y:{display:false}}}
+      });
+    }
+  });
+
+  // Summary cards
+  renderSummary(data, caseId);
+}
+
+// Render summary area (simple cards)
+function renderSummary(data, caseId) {
+  const sum = document.getElementById('summary-cards');
+  sum.innerHTML = '';
+  // Total messages
+  const totalMsgs = data.chats.reduce((a,b)=>a+b,0) + data.calls.reduce((a,b)=>a+b,0);
+  const suspicious = data.probBuckets.reduce((a,b)=>a+b,0);
+  const topContact = data.contacts[0]?.name || 'N/A';
+  const typesTotal = Object.values(data.types).reduce((a,b)=>a+b,0);
+
+  const items = [
+    { title:'Total Interactions', value: totalMsgs },
+    { title:'Suspicious Hits', value: suspicious },
+    { title:'Top Contact', value: topContact },
+    { title:'Media Count', value: data.types.media },
+    { title:'Deleted Messages', value: data.types.deleted }
+  ];
+
+  for (const it of items) {
+    const c = document.createElement('div');
+    c.className = 'graph-card';
+    c.style.minWidth='160px';
+    c.innerHTML = `<h4 style="color:var(--color-text-light)">${it.title}</h4><p style="font-size:1.4rem;font-weight:700">${it.value}</p>`;
+    sum.appendChild(c);
+  }
+}
+
+// Open modal and render full chart for given key
+function openChartModal(key) {
+  const caseId = document.getElementById('case-select').value;
+  const data = generateMockData(caseId);
+
+  const modal = document.getElementById('chart-modal');
+  const container = document.getElementById('modal-chart-container');
+  container.innerHTML = ''; // clear previous
+  modal.style.display = 'flex';
+
+  // helper to create canvas
+  const canvas = document.createElement('canvas');
+  container.appendChild(canvas);
+
+  // destroy existing chart if present
+  if (CHARTS.modal) { try { CHARTS.modal.destroy(); } catch(e){} CHARTS.modal = null; }
+
+  if (key === 'line') {
+    CHARTS.modal = new Chart(canvas.getContext('2d'), {
+      type:'line',
+      data:{
+        labels: data.days,
+        datasets:[
+          { label:'Chats', data: data.chats, borderColor:'#00c3ff', tension:0.2 },
+          { label:'Calls', data: data.calls, borderColor:'#ff8a50', tension:0.2 }
+        ]
+      },
+      options:{responsive:true, plugins:{legend:{position:'top'}}}
+    });
+
+  } else if (key === 'bar') {
+    CHARTS.modal = new Chart(canvas.getContext('2d'), {
+      type:'bar',
+      data:{
+        labels: data.contacts.map(c=>c.name),
+        datasets:[{ label:'Interactions', data: data.contacts.map(c=>c.count) }]
+      },
+      options:{responsive:true, plugins:{legend:{display:false}}, indexAxis:'y'}
+    });
+
+  } else if (key === 'pie') {
+    CHARTS.modal = new Chart(canvas.getContext('2d'), {
+      type:'doughnut',
+      data:{
+        labels: Object.keys(data.types),
+        datasets:[{ data: Object.values(data.types) }]
+      },
+      options:{responsive:true}
+    });
+
+  } else if (key === 'heat') {
+    // simple heatmap using SVG squares with D3
+    const svg = d3.create('svg')
+      .attr('width', '100%').attr('height', 420);
+    container.innerHTML = '';
+    container.appendChild(svg.node());
+
+    const kw = data.keywords;
+    const counts = data.keywordCounts;
+    const cols = 4;
+    const cellW = 120, cellH = 60;
+    const color = d3.scaleSequential(d3.interpolateRgb('#001f33','#00c3ff')).domain([0, d3.max(counts)]);
+    const g = svg.append('g').attr('transform','translate(20,30)');
+    kw.forEach((k,i)=>{
+      const x = (i % cols) * (cellW+10);
+      const y = Math.floor(i/cols) * (cellH+10);
+      g.append('rect').attr('x',x).attr('y',y).attr('width',cellW).attr('height',cellH).attr('fill',color(counts[i]));
+      g.append('text').attr('x', x+10).attr('y', y+25).text(k + ' ('+counts[i]+')').attr('fill','#fff');
+    });
+
+  } else if (key === 'prob') {
+    CHARTS.modal = new Chart(canvas.getContext('2d'), {
+      type:'bar',
+      data:{
+        labels: data.probBuckets.map((_,i)=>`B${i+1}`),
+        datasets:[{ label:'Prob Score', data: data.probBuckets }]
+      },
+      options:{responsive:true}
+    });
+
+  } else if (key === 'radar') {
+    CHARTS.modal = new Chart(canvas.getContext('2d'), {
+      type:'radar',
+      data:{
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        datasets:[
+          { label:'Daily Activity', data: data.daysOfWeek, fill:true },
+          { label:'Hourly Peak (sample 7 points)', data: data.hours.slice(0,7), fill:true }
+        ]
+      },
+      options:{responsive:true, scales:{r:{beginAtZero:true}}}
+    });
+
+  } else if (key === 'network') {
+    // network: use d3 force simulation displayed in SVG
+    container.innerHTML = '';
+    const svg = d3.create('svg').attr('width','100%').attr('height',420);
+    container.appendChild(svg.node());
+
+    const width = container.clientWidth || 1000;
+    const height = 420;
+
+    const sim = d3.forceSimulation(data.nodes)
+      .force('link', d3.forceLink(data.links).id(d=>d.id).distance(80).strength(0.6))
+      .force('charge', d3.forceManyBody().strength(-200))
+      .force('center', d3.forceCenter(width/2, height/2));
+
+    const link = d3.select(svg.node()).append('g')
+      .attr('stroke','#999').selectAll('line')
+      .data(data.links).enter().append('line')
+      .attr('stroke-width', d=> Math.max(1, d.weight/20));
+
+    const node = d3.select(svg.node()).append('g').selectAll('circle')
+      .data(data.nodes).enter().append('circle')
+      .attr('r', d=> d.group===1?12:8).attr('fill', d=> d.group===1? '#00c3ff' : '#ff8a50')
+      .call(drag(sim));
+
+    const label = d3.select(svg.node()).append('g').selectAll('text')
+      .data(data.nodes).enter().append('text')
+      .text(d=>d.id).attr('font-size',10).attr('dx',10).attr('dy',4);
+
+    sim.on('tick', ()=>{
+      link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+      node.attr('cx',d=>d.x).attr('cy',d=>d.y);
+      label.attr('x',d=>d.x).attr('y',d=>d.y);
+    });
+
+    function drag(simulation) {
+      function dragstarted(event,d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      }
+      function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+      function dragended(event,d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      }
+      return d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended);
+    }
+  }
+
+  // Close handling
+  document.getElementById('modal-close').onclick = ()=> { document.getElementById('chart-modal').style.display='none'; };
+}
+
+// initialize UI
+document.getElementById('load-case-btn').addEventListener('click', loadCase);
+populateCaseSelect();
+renderCards();
+
+// auto-load first case previews
+document.addEventListener('DOMContentLoaded', ()=> {
+  if (document.getElementById('case-select').options.length) {
+    document.getElementById('case-select').selectedIndex = 0;
+    loadCase();
+  }
+});
+//Face API JS model
+
+
+
+let labeledDescriptors = []; 
+
+async function startFaceAPI() {
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+
+    console.log("✔ All FaceAPI Models Loaded");
+
+    await loadKnownFaces();
+    console.log("✔ Suspect Faces Loaded");
+}
+
+startFaceAPI();
+
+
+// LOAD EXISTING SUSPECT IMAGES
+const persons = [
+    { 
+        name: "Suspect1", 
+        image: "suspect1.jpg", 
+        cases: 5,
+        locations: [
+            { lat: 12.9716, lng: 77.5946, description: "Case 1 - Bangalore" },
+            { lat: 13.0827, lng: 80.2707, description: "Case 2 - Chennai" }
+        ]
+    },
+    { 
+        name: "Suspect2", 
+        image: "suspect2.jpg", 
+        cases: 2,
+        locations: [
+            { lat: 19.0760, lng: 72.8777, description: "Primary case - Mumbai" }
+        ]
+    },
+    { 
+        name: "Suspect3", 
+        image: "suspect3.jpg", 
+        cases: 7,
+        locations: [
+            { lat: 28.7041, lng: 77.1025, description: "Case - Delhi" }
+        ]
+    }
+];
+
+
+
+async function loadKnownFaces() {
+
+    for (let p of persons) {
+        const img = await faceapi.fetchImage(p.image);
+        const detection = await faceapi
+            .detectSingleFace(img)
+            .withFaceLandmarks()
+            .withFaceDescriptor();
+
+        if (detection) {
+            labeledDescriptors.push(
+                new faceapi.LabeledFaceDescriptors(
+                    p.name,
+                    [detection.descriptor]
+                )
+            );
+        }
+    }
+}
+
+
+
+// MATCH UPLOADED IMAGE
+
+async function runFaceRecognition() {
+    const fileInput = document.getElementById("faceUpload");
+    const resultMsg = document.getElementById("match-result");
+
+    if (fileInput.files.length === 0) {
+        resultMsg.textContent = "Please upload an image first.";
+        return;
+    }
+
+    const image = await faceapi.bufferToImage(fileInput.files[0]);
+    const detection = await faceapi.detectSingleFace(image)
+        .withFaceLandmarks()
+        .withFaceDescriptor();
+
+    if (!detection) {
+        resultMsg.textContent = "No face detected.";
+        return;
+    }
+
+    const matcher = new faceapi.FaceMatcher(labeledDescriptors, 0.6);
+    const bestMatch = matcher.findBestMatch(detection.descriptor);
+
+    const confidence = Math.round((1 - bestMatch.distance) * 100);
+    if (confidence > 60) {
+
+    const matchData = persons.find(p => p.name === bestMatch.label);
+
+    resultMsg.innerHTML = `
+        <span style="color:var(--color-neon-blue);">
+        Match Found: <b>${bestMatch.label}</b> (${confidence}%)
+        </span>`;
+
+    // SHOW SUSPECT IMAGE
+    document.getElementById("matched-photo").src = matchData.image;
+    document.getElementById("matched-photo").style.display = "block";
+
+    // SHOW CASES
+    document.getElementById("linked-cases").innerHTML =
+        "Linked Cases: <b>" + matchData.cases + "</b>";
+        // SHOW GEO MAP
+    document.getElementById("geo-map").style.display = "block";
+
+    // INITIALIZE MAP
+    let map = L.map('geo-map').setView(
+        [matchData.locations[0].lat, matchData.locations[0].lng],
+        6
+    );
+
+    // ADD TILELAYERS
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18
+    }).addTo(map);
+
+    // ADD MARKERS
+    matchData.locations.forEach(loc => {
+        L.marker([loc.lat, loc.lng])
+        .addTo(map)
+        .bindPopup(`<b>${matchData.name}</b><br>${loc.description}`);
+    });
+
+
+        } else {
+
+    resultMsg.innerHTML = `
+        <span style="color:var(--color-neon-red);">
+        ❌ No matching face in list (${confidence}% similarity)
+        </span>`;
+
+    document.getElementById("matched-photo").style.display = "none";
+    document.getElementById("linked-cases").innerHTML = "Linked Cases: 0";
+    document.getElementById("geo-map").style.display = "none";
+document.getElementById("geo-map").innerHTML = "";
+
+
+}
+
+
+}
+</script>
+
+
+
+
+ 
+     
+</body>
+</html>
