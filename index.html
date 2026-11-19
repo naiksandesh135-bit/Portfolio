@@ -14,38 +14,75 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <style>
+        /* ========================================================
+           EXECUTIVE THEME SYSTEM (Mint Teal Default + Switcher)
+           ======================================================== */
         :root {
-            /* Executive Obsidian Charcoal & Precision Sky Blue Theme */
-            --bg-dark: #080a10;
-            --bg-surface: #0d121c;
-            --bg-card: rgba(16, 22, 34, 0.76);
-            --bg-card-hover: rgba(22, 31, 48, 0.92);
+            /* Cyber-Mint & Obsidian Noir Theme */
+            --bg-dark: #070d0b;
+            --bg-surface: #0c1613;
+            --bg-card: rgba(13, 24, 21, 0.78);
+            --bg-card-hover: rgba(19, 36, 31, 0.92);
             --border-color: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(56, 189, 248, 0.45);
+            --border-hover: rgba(45, 212, 191, 0.45);
             
             /* Text Hierarchy */
             --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-secondary: #9cb1ab;
+            --text-muted: #5e756f;
             
-            /* Crisp Precision Tech Accents */
-            --primary: #0284c7;          /* Azure Tech Blue */
-            --primary-light: #38bdf8;    /* Precision Sky Blue */
-            --primary-glow: rgba(56, 189, 248, 0.18);
-            --secondary: #6366f1;        /* Royal Indigo */
-            --accent: #0ea5e9;           /* Electric Cyan */
-            --emerald: #10b981;          /* Academic / Success */
+            /* Precision Accents */
+            --primary: #0d9488;          /* Emerald Teal */
+            --primary-light: #2dd4bf;    /* Electric Mint */
+            --primary-glow: rgba(45, 212, 191, 0.22);
+            --secondary: #10b981;        /* Emerald */
+            --accent: #06b6d4;           /* Cyan */
+            --emerald: #34d399;
             --amber: #f59e0b;
             
             --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             
             --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            --shadow-hover: 0 20px 40px -12px rgba(2, 132, 199, 0.22);
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --shadow-hover: 0 20px 40px -12px rgba(13, 148, 136, 0.28);
             --radius-card: 16px;
             --radius-btn: 10px;
             --radius-pill: 9999px;
+        }
+
+        /* Violet Theme */
+        [data-theme="violet"] {
+            --bg-dark: #0a0912;
+            --bg-surface: #100e1c;
+            --bg-card: rgba(20, 18, 34, 0.78);
+            --bg-card-hover: rgba(28, 25, 48, 0.92);
+            --border-hover: rgba(168, 85, 247, 0.45);
+            --text-secondary: #a8a3b8;
+            --text-muted: #645f78;
+            --primary: #7c3aed;
+            --primary-light: #a855f7;
+            --primary-glow: rgba(168, 85, 247, 0.22);
+            --secondary: #ec4899;
+            --accent: #c084fc;
+            --shadow-hover: 0 20px 40px -12px rgba(124, 58, 237, 0.28);
+        }
+
+        /* Cobalt Theme */
+        [data-theme="cobalt"] {
+            --bg-dark: #080a12;
+            --bg-surface: #0d1220;
+            --bg-card: rgba(15, 22, 38, 0.78);
+            --bg-card-hover: rgba(22, 32, 54, 0.92);
+            --border-hover: rgba(56, 189, 248, 0.45);
+            --text-secondary: #94a3b8;
+            --text-muted: #5e6b7f;
+            --primary: #0284c7;
+            --primary-light: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.22);
+            --secondary: #6366f1;
+            --accent: #0ea5e9;
+            --shadow-hover: 0 20px 40px -12px rgba(2, 132, 199, 0.28);
         }
 
         * {
@@ -66,6 +103,7 @@
             line-height: 1.6;
             background-color: var(--bg-dark);
             color: var(--text-primary);
+            transition: background-color 0.3s ease;
         }
 
         /* Custom Scrollbar */
@@ -76,7 +114,7 @@
             background: var(--bg-dark);
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -88,7 +126,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(8, 10, 16, 0.85);
+            background: rgba(7, 13, 11, 0.85);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border-color);
@@ -159,8 +197,37 @@
         .nav-right-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
+
+        /* Theme Accent Switcher in Navbar */
+        .theme-switcher-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            padding: 4px 6px;
+            border-radius: var(--radius-pill);
+        }
+
+        .theme-dot-btn {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-dot-btn:hover, .theme-dot-btn.active {
+            transform: scale(1.2);
+            border-color: #ffffff;
+        }
+
+        .theme-dot-mint { background: #2dd4bf; }
+        .theme-dot-violet { background: #a855f7; }
+        .theme-dot-cobalt { background: #38bdf8; }
 
         .nav-resume-btn {
             display: inline-flex;
@@ -178,7 +245,7 @@
         }
 
         .nav-resume-btn:hover {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(45, 212, 191, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
         }
@@ -227,10 +294,11 @@
             transform: translate(-50%, -50%);
             width: 550px;
             height: 550px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(2, 132, 199, 0.05) 45%, transparent 70%);
-            filter: blur(50px);
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(13, 148, 136, 0.05) 50%, transparent 70%);
+            filter: blur(55px);
             z-index: 0;
             pointer-events: none;
+            transition: background 0.3s ease;
         }
 
         .hero-container {
@@ -257,9 +325,9 @@
             gap: 8px;
             padding: 6px 14px;
             border-radius: var(--radius-pill);
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            color: #7dd3fc;
+            background: rgba(45, 212, 191, 0.1);
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            color: var(--primary-light);
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.3px;
@@ -324,16 +392,16 @@
         }
 
         .btn-primary {
-            background: #0284c7;
+            background: var(--primary);
             color: #ffffff;
             border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35);
+            box-shadow: 0 4px 18px rgba(13, 148, 136, 0.35);
         }
 
         .btn-primary:hover {
-            background: #0369a1;
+            background: #0f766e;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.5);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.5);
         }
 
         .btn-secondary {
@@ -355,7 +423,7 @@
         }
 
         .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(45, 212, 191, 0.1);
             color: var(--primary-light);
             border-color: var(--border-hover);
             transform: translateY(-2px);
@@ -389,7 +457,7 @@
         }
 
         .social-link:hover {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(45, 212, 191, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
             transform: translateY(-2px);
@@ -408,7 +476,7 @@
             width: 340px;
             height: 340px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(2, 132, 199, 0.1) 50%, transparent 70%);
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%);
             filter: blur(20px);
             z-index: 1;
             pointer-events: none;
@@ -421,14 +489,14 @@
             height: 300px;
             border-radius: 50%;
             padding: 6px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(2, 132, 199, 0.25), rgba(255, 255, 255, 0.1));
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.25);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary), rgba(255, 255, 255, 0.1));
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--primary-glow);
             transition: var(--transition);
         }
 
         .photo-ring:hover {
             transform: scale(1.02);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 40px var(--primary-glow);
         }
 
         .profile-img-circular {
@@ -592,8 +660,8 @@
             width: 44px;
             height: 44px;
             border-radius: 10px;
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            background: rgba(45, 212, 191, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -626,7 +694,7 @@
         }
 
         .skill-badge:hover {
-            background: rgba(56, 189, 248, 0.12);
+            background: rgba(45, 212, 191, 0.12);
             color: var(--text-primary);
             border-color: var(--border-hover);
             transform: translateY(-1px);
@@ -681,7 +749,7 @@
         .thumb-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(8, 10, 16, 0.9) 0%, rgba(8, 10, 16, 0.2) 100%);
+            background: linear-gradient(to top, rgba(7, 13, 11, 0.9) 0%, rgba(7, 13, 11, 0.2) 100%);
         }
 
         .project-category-badge {
@@ -694,10 +762,10 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: rgba(8, 10, 16, 0.85);
+            background: rgba(7, 13, 11, 0.88);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
-            color: #7dd3fc;
+            color: var(--primary-light);
         }
 
         .project-body {
@@ -748,17 +816,17 @@
             font-weight: bold;
         }
 
-        /* Blood Bank Gallery Preview Strip */
+        /* Blood Bank 4-Photo Preview Strip (100% Local Images) */
         .project-gallery-preview {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
             margin-bottom: 16px;
         }
 
         .project-gallery-preview img {
             width: 100%;
-            height: 64px;
+            height: 60px;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-color);
@@ -767,9 +835,9 @@
         }
 
         .project-gallery-preview img:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
             border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+            box-shadow: 0 4px 12px var(--primary-glow);
         }
 
         .project-tags {
@@ -815,14 +883,14 @@
         }
 
         .proj-btn-primary {
-            background: rgba(2, 132, 199, 0.18);
-            border-color: rgba(56, 189, 248, 0.35);
-            color: #7dd3fc;
+            background: rgba(13, 148, 136, 0.18);
+            border-color: rgba(45, 212, 191, 0.35);
+            color: var(--primary-light);
         }
 
         .proj-btn-primary:hover {
-            background: #0284c7;
-            border-color: #0284c7;
+            background: var(--primary);
+            border-color: var(--primary);
             color: #ffffff;
         }
 
@@ -879,9 +947,9 @@
             gap: 5px;
             padding: 4px 12px;
             border-radius: var(--radius-pill);
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            color: #38bdf8;
+            background: rgba(45, 212, 191, 0.1);
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            color: var(--primary-light);
             font-size: 12.5px;
             font-weight: 600;
         }
@@ -1025,9 +1093,9 @@
         }
 
         .badge-finalist {
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #7dd3fc;
+            background: rgba(45, 212, 191, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            color: var(--primary-light);
         }
 
         .timeline-year {
@@ -1108,8 +1176,8 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            background: rgba(45, 212, 191, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1174,7 +1242,7 @@
         }
 
         .social-btn-large:hover {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(45, 212, 191, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
             transform: translateY(-2px);
@@ -1212,7 +1280,7 @@
         .form-row input,
         .form-row textarea {
             width: 100%;
-            background: rgba(8, 10, 16, 0.6);
+            background: rgba(7, 13, 11, 0.6);
             border: 1px solid var(--border-color);
             padding: 14px 16px;
             border-radius: 10px;
@@ -1230,8 +1298,8 @@
         .form-row input:focus,
         .form-row textarea:focus {
             border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
-            background: rgba(13, 18, 28, 0.9);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+            background: rgba(12, 22, 19, 0.9);
         }
 
         .form-row label {
@@ -1260,7 +1328,7 @@
 
         .form-submit-btn {
             width: 100%;
-            background: #0284c7;
+            background: var(--primary);
             color: #ffffff;
             border: none;
             padding: 14px;
@@ -1273,20 +1341,20 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.3);
         }
 
         .form-submit-btn:hover {
-            background: #0369a1;
+            background: #0f766e;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45);
         }
 
         /* Success screen */
         .form-success-overlay {
             position: absolute;
             inset: 0;
-            background: #0d121c;
+            background: #0c1613;
             border-radius: var(--radius-card);
             display: flex;
             flex-direction: column;
@@ -1324,7 +1392,7 @@
         /* FOOTER */
         footer {
             border-top: 1px solid var(--border-color);
-            background: #05070e;
+            background: #040807;
             padding: 36px 24px 28px;
             text-align: center;
             color: var(--text-muted);
@@ -1351,7 +1419,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(4, 6, 14, 0.84);
+            background: rgba(3, 7, 6, 0.86);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             justify-content: center;
@@ -1368,14 +1436,14 @@
         }
 
         .popup-box {
-            background: #0d121c;
+            background: #0c1613;
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 32px;
             width: 100%;
             max-width: 480px;
             border-radius: 18px;
             text-align: center;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
             transform: scale(0.92);
             transition: var(--transition);
         }
@@ -1387,8 +1455,8 @@
         .popup-icon-circle {
             font-size: 36px;
             color: var(--primary-light);
-            background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            background: rgba(45, 212, 191, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.25);
             width: 64px;
             height: 64px;
             border-radius: 50%;
@@ -1434,12 +1502,12 @@
         }
 
         .popup-btn-confirm {
-            background: #0284c7;
+            background: var(--primary);
             color: #ffffff;
         }
 
         .popup-btn-confirm:hover {
-            background: #0369a1;
+            background: #0f766e;
         }
 
         .popup-btn-cancel {
@@ -1500,7 +1568,7 @@
             position: relative;
             width: 100%;
             height: 340px;
-            background: #080a10;
+            background: #050a08;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -1524,7 +1592,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(8, 10, 16, 0.75);
+            background: rgba(7, 13, 11, 0.78);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
@@ -1682,7 +1750,7 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: rgba(8, 10, 16, 0.96);
+                background: rgba(7, 13, 11, 0.96);
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
                 border-bottom: 1px solid var(--border-color);
@@ -1768,6 +1836,12 @@
                 <a href="#contact">Contact</a>
             </nav>
             <div class="nav-right-actions">
+                <!-- Theme Accent Picker -->
+                <div class="theme-switcher-wrapper" title="Choose Accent Palette">
+                    <button class="theme-dot-btn theme-dot-mint active" onclick="setPalette('mint')" aria-label="Mint Teal Theme"></button>
+                    <button class="theme-dot-btn theme-dot-violet" onclick="setPalette('violet')" aria-label="Violet Theme"></button>
+                    <button class="theme-dot-btn theme-dot-cobalt" onclick="setPalette('cobalt')" aria-label="Cobalt Blue Theme"></button>
+                </div>
                 <a href="Resume.pdf" target="_blank" class="nav-resume-btn">
                     <i class="ri-file-text-line"></i>
                     <span>Resume</span>
@@ -1976,12 +2050,12 @@
 
             <div class="projects-grid">
 
-                <!-- 1. GrievTech -->
+                <!-- 1. GrievTech (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Full-Stack Civic Tech</span>
-                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="GrievTech">
+                        <img src="grievtech.jpg" alt="GrievTech">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">GrievTech — Public Grievance Management</h3>
@@ -2009,12 +2083,12 @@
                     </div>
                 </div>
 
-                <!-- 2. CardioSense AI -->
+                <!-- 2. CardioSense AI (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">AI / ML Healthcare</span>
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="CardioSense AI">
+                        <img src="cardiosense.jpg" alt="CardioSense AI">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">CardioSense AI — Heart Disease Prediction</h3>
@@ -2044,12 +2118,12 @@
                     </div>
                 </div>
 
-                <!-- 3. StudentOS -->
+                <!-- 3. StudentOS (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">EdTech Management</span>
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="StudentOS">
+                        <img src="studentos.jpg" alt="StudentOS">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">StudentOS — Career Platform</h3>
@@ -2068,12 +2142,12 @@
                     </div>
                 </div>
 
-                <!-- 4. Dhwani AI -->
+                <!-- 4. Dhwani AI (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">National Hackathon Winner</span>
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Dhwani AI">
+                        <img src="dhwani.jpg" alt="Dhwani AI">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">Dhwani AI — Patient Engagement</h3>
@@ -2092,12 +2166,12 @@
                     </div>
                 </div>
 
-                <!-- 5. GridWatch -->
+                <!-- 5. GridWatch (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Infrastructure Sim</span>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="GridWatch">
+                        <img src="gridwatch.jpg" alt="GridWatch">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">GridWatch — Network Optimizer</h3>
@@ -2116,12 +2190,12 @@
                     </div>
                 </div>
 
-                <!-- 6. VoiceGuard AI -->
+                <!-- 6. VoiceGuard AI (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Cybersecurity</span>
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="VoiceGuard AI">
+                        <img src="voiceguard.jpg" alt="VoiceGuard AI">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">VoiceGuard AI — Fake Call Detection</h3>
@@ -2140,12 +2214,12 @@
                     </div>
                 </div>
 
-                <!-- 7. WasteLedger -->
+                <!-- 7. WasteLedger (Local Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Blockchain Ecology</span>
-                        <img src="portpr1.jpg" alt="WasteLedger" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=80'">
+                        <img src="portpr1.jpg" alt="WasteLedger">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">WasteLedger — Verification System</h3>
@@ -2164,12 +2238,12 @@
                     </div>
                 </div>
 
-                <!-- 8. Cyber Lens -->
+                <!-- 8. Cyber Lens (Local Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Digital Forensics</span>
-                        <img src="portpr3.png" alt="Cyber Lens" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80'">
+                        <img src="portpr3.png" alt="Cyber Lens">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">Cyber Lens — Forensic Analyzer</h3>
@@ -2188,22 +2262,23 @@
                     </div>
                 </div>
 
-                <!-- 9. Blood Banking System (With Added Photos & Photo Gallery) -->
+                <!-- 9. Blood Banking System (100% LOCAL GUARANTEED IMAGES + GALLERY) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">Healthcare Web & Emergency</span>
-                        <img src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=600&q=80" alt="Blood Banking System">
+                        <img src="bloodbank3.jpg" alt="Blood Banking System">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">Blood Banking System</h3>
                         <p class="project-desc">Emergency blood donation platform streamlining donor registrations, tracking ward inventory availability, and triggering Twilio SMS alerts.</p>
                         
-                        <!-- Multi-Photo Preview Strip -->
+                        <!-- 4-Photo Preview Strip (All 100% Local Files) -->
                         <div class="project-gallery-preview">
-                            <img src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=400&q=80" alt="Blood donor testing" onclick="openBloodBankGallery(0)" title="Click to view full photo">
-                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=400&q=80" alt="Blood inventory storage" onclick="openBloodBankGallery(1)" title="Click to view full photo">
-                            <img src="https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&w=400&q=80" alt="Donation collection camp" onclick="openBloodBankGallery(2)" title="Click to view full photo">
+                            <img src="bloodbank1.jpg" alt="Donor Consultation" onclick="openBloodBankGallery(0)" title="Click to view photo 1: Donor Consultation">
+                            <img src="bloodbank2.jpg" alt="Blood Testing Lab" onclick="openBloodBankGallery(1)" title="Click to view photo 2: Blood Testing Lab">
+                            <img src="bloodbank3.jpg" alt="Inventory Storage" onclick="openBloodBankGallery(2)" title="Click to view photo 3: Inventory Storage">
+                            <img src="bloodbank4.jpg" alt="Emergency Dispatch" onclick="openBloodBankGallery(3)" title="Click to view photo 4: Emergency Dispatch">
                         </div>
 
                         <div class="project-tags">
@@ -2224,12 +2299,12 @@
                     </div>
                 </div>
 
-                <!-- 10. Cricket Pro -->
+                <!-- 10. Cricket Pro (Local High-Res Image) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
                         <span class="project-category-badge">E-Commerce</span>
-                        <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=600&q=80" alt="Cricket Pro">
+                        <img src="cricketpro.jpg" alt="Cricket Pro">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">Cricket Pro — Storefront Platform</h3>
@@ -2499,7 +2574,7 @@
         </div>
     </div>
 
-    <!-- Blood Banking Photo Gallery Modal -->
+    <!-- Blood Banking Photo Gallery Modal (Uses 100% Local Images) -->
     <div id="bloodBankGalleryPopup" class="popup-overlay" onclick="closeBloodBankGallery(event)">
         <div class="popup-box gallery-popup-box" onclick="event.stopPropagation()">
             <div class="gallery-header">
@@ -2512,7 +2587,7 @@
                 </button>
             </div>
             <div class="gallery-main-display">
-                <img id="gallery-main-img" src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=1200&q=80" alt="Blood Bank Preview">
+                <img id="gallery-main-img" src="bloodbank1.jpg" alt="Blood Bank Preview">
                 <button class="gallery-nav-btn prev-btn" onclick="prevGalleryPhoto()" aria-label="Previous photo">
                     <i class="ri-arrow-left-s-line"></i>
                 </button>
@@ -2540,6 +2615,23 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // --- 0. THEME PALETTE MANAGER ---
+        function setPalette(name) {
+            document.documentElement.setAttribute('data-theme', name === 'mint' ? '' : name);
+            document.querySelectorAll('.theme-dot-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.querySelector(`.theme-dot-${name}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            localStorage.setItem('sdn-portfolio-theme', name);
+            if (typeof initParticles === 'function') initParticles();
+        }
+
+        // Restore saved palette
+        const savedTheme = localStorage.getItem('sdn-portfolio-theme') || 'mint';
+        if (savedTheme !== 'mint') {
+            setPalette(savedTheme);
+        }
+
+
         // --- 1. HERO PARTICLES BACKGROUND ---
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
@@ -2570,7 +2662,12 @@
                 if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
             }
             draw() {
-                ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let color = `rgba(45, 212, 191, ${this.alpha})`;
+                if (currentTheme === 'violet') color = `rgba(168, 85, 247, ${this.alpha})`;
+                else if (currentTheme === 'cobalt') color = `rgba(56, 189, 248, ${this.alpha})`;
+
+                ctx.fillStyle = color;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -2588,6 +2685,11 @@
 
         function connectParticles() {
             let maxDistance = 110;
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let baseRgb = "45, 212, 191";
+            if (currentTheme === "violet") baseRgb = "168, 85, 247";
+            else if (currentTheme === "cobalt") baseRgb = "56, 189, 248";
+
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let dx = particlesArray[a].x - particlesArray[b].x;
@@ -2596,7 +2698,7 @@
 
                     if (distance < maxDistance) {
                         let opacity = (1 - (distance / maxDistance)) * 0.12;
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
+                        ctx.strokeStyle = `rgba(${baseRgb}, ${opacity})`;
                         ctx.lineWidth = 0.8;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -2765,27 +2867,27 @@
         }
 
 
-        // --- 6. BLOOD BANK PHOTO GALLERY LOGIC ---
+        // --- 6. BLOOD BANK PHOTO GALLERY LOGIC (100% Local Images) ---
         const bloodBankPhotos = [
             {
-                url: "https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=1200&q=80",
-                title: "Clinical Blood Group Testing & Matching",
-                desc: "Screening interface verifying donor eligibility, blood group classification, and real-time cross-match validation."
+                url: "bloodbank1.jpg",
+                title: "Clinical Donor Consultation & Screening",
+                desc: "Screening interface verifying donor eligibility, medical history questionnaires, and real-time cross-match validation."
             },
             {
-                url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80",
+                url: "bloodbank2.jpg",
+                title: "Laboratory Blood Group Testing & Screening",
+                desc: "Laboratory analysis interface logging ABO/Rh blood grouping, viral marker clearance, and compatibility verification."
+            },
+            {
+                url: "bloodbank3.jpg",
                 title: "Blood Inventory & Cold Storage Monitoring",
-                desc: "Hospital ward inventory dashboard logging component units (RBC, Platelets, Plasma) with automated expiry alerts."
+                desc: "Hospital ward inventory dashboard logging component units (RBC, Platelets, Plasma) with automated cold-chain alerts."
             },
             {
-                url: "https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&w=1200&q=80",
-                title: "Donor Collection & Bag Barcode Tracking",
-                desc: "Automated batch logging during emergency collection camps, ensuring chain-of-custody tracking across wards."
-            },
-            {
-                url: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+                url: "bloodbank4.jpg",
                 title: "Twilio Emergency SMS Alerts & Dispatch",
-                desc: "Instant automated SMS broadcast to verified nearby donors within a 10km radius during critical trauma emergencies."
+                desc: "Automated instant SMS broadcast dispatching urgent blood requests to nearby registered donors within minutes."
             }
         ];
 
