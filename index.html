@@ -15,34 +15,34 @@
 
     <style>
         :root {
-            /* Sophisticated dark navy / charcoal palette */
-            --bg-dark: #070a14;
-            --bg-surface: #0b1120;
-            --bg-card: rgba(15, 23, 42, 0.72);
-            --bg-card-hover: rgba(22, 34, 61, 0.88);
+            /* Executive Obsidian Charcoal & Precision Sky Blue Theme */
+            --bg-dark: #080a10;
+            --bg-surface: #0d121c;
+            --bg-card: rgba(16, 22, 34, 0.76);
+            --bg-card-hover: rgba(22, 31, 48, 0.92);
             --border-color: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(99, 102, 241, 0.35);
+            --border-hover: rgba(56, 189, 248, 0.45);
             
             /* Text Hierarchy */
-            --text-primary: #f8fafc;
+            --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
             
-            /* Premium Accent Tones */
-            --primary: #6366f1;          /* Indigo */
-            --primary-light: #818cf8;
-            --primary-glow: rgba(99, 102, 241, 0.18);
-            --secondary: #3b82f6;        /* Subtle Blue */
-            --accent: #8b5cf6;           /* Purple */
+            /* Crisp Precision Tech Accents */
+            --primary: #0284c7;          /* Azure Tech Blue */
+            --primary-light: #38bdf8;    /* Precision Sky Blue */
+            --primary-glow: rgba(56, 189, 248, 0.18);
+            --secondary: #6366f1;        /* Royal Indigo */
+            --accent: #0ea5e9;           /* Electric Cyan */
             --emerald: #10b981;          /* Academic / Success */
             --amber: #f59e0b;
             
             --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             
-            --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            --shadow-hover: 0 20px 40px -12px rgba(99, 102, 241, 0.2);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            --shadow-hover: 0 20px 40px -12px rgba(2, 132, 199, 0.22);
             --radius-card: 16px;
             --radius-btn: 10px;
             --radius-pill: 9999px;
@@ -80,7 +80,7 @@
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
+            background: var(--primary-light);
         }
 
         /* NAVIGATION BAR */
@@ -88,7 +88,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(7, 10, 20, 0.82);
+            background: rgba(8, 10, 16, 0.85);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border-color);
@@ -178,7 +178,7 @@
         }
 
         .nav-resume-btn:hover {
-            background: rgba(99, 102, 241, 0.15);
+            background: rgba(56, 189, 248, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
         }
@@ -217,7 +217,7 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.55;
         }
 
         .hero-glow {
@@ -227,7 +227,7 @@
             transform: translate(-50%, -50%);
             width: 550px;
             height: 550px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(59, 130, 246, 0.06) 45%, transparent 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(2, 132, 199, 0.05) 45%, transparent 70%);
             filter: blur(50px);
             z-index: 0;
             pointer-events: none;
@@ -257,9 +257,9 @@
             gap: 8px;
             padding: 6px 14px;
             border-radius: var(--radius-pill);
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            color: #a5b4fc;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #7dd3fc;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.3px;
@@ -324,16 +324,16 @@
         }
 
         .btn-primary {
-            background: #4f46e5;
+            background: #0284c7;
             color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 4px 18px rgba(79, 70, 229, 0.35);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35);
         }
 
         .btn-primary:hover {
-            background: #4338ca;
+            background: #0369a1;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.5);
         }
 
         .btn-secondary {
@@ -355,7 +355,7 @@
         }
 
         .btn-outline:hover {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(56, 189, 248, 0.1);
             color: var(--primary-light);
             border-color: var(--border-hover);
             transform: translateY(-2px);
@@ -389,7 +389,7 @@
         }
 
         .social-link:hover {
-            background: rgba(99, 102, 241, 0.15);
+            background: rgba(56, 189, 248, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
             transform: translateY(-2px);
@@ -408,7 +408,7 @@
             width: 340px;
             height: 340px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(2, 132, 199, 0.1) 50%, transparent 70%);
             filter: blur(20px);
             z-index: 1;
             pointer-events: none;
@@ -421,14 +421,14 @@
             height: 300px;
             border-radius: 50%;
             padding: 6px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.45), rgba(59, 130, 246, 0.2), rgba(255, 255, 255, 0.08));
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.2);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(2, 132, 199, 0.25), rgba(255, 255, 255, 0.1));
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.25);
             transition: var(--transition);
         }
 
         .photo-ring:hover {
             transform: scale(1.02);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 40px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.4);
         }
 
         .profile-img-circular {
@@ -592,8 +592,8 @@
             width: 44px;
             height: 44px;
             border-radius: 10px;
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.25);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -626,7 +626,7 @@
         }
 
         .skill-badge:hover {
-            background: rgba(99, 102, 241, 0.12);
+            background: rgba(56, 189, 248, 0.12);
             color: var(--text-primary);
             border-color: var(--border-hover);
             transform: translateY(-1px);
@@ -681,7 +681,7 @@
         .thumb-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(7, 10, 20, 0.9) 0%, rgba(7, 10, 20, 0.2) 100%);
+            background: linear-gradient(to top, rgba(8, 10, 16, 0.9) 0%, rgba(8, 10, 16, 0.2) 100%);
         }
 
         .project-category-badge {
@@ -694,10 +694,10 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: rgba(7, 10, 20, 0.85);
+            background: rgba(8, 10, 16, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
-            color: #a5b4fc;
+            color: #7dd3fc;
         }
 
         .project-body {
@@ -720,7 +720,7 @@
             color: var(--text-secondary);
             font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             flex-grow: 1;
         }
 
@@ -746,6 +746,30 @@
             left: 0;
             color: var(--primary-light);
             font-weight: bold;
+        }
+
+        /* Blood Bank Gallery Preview Strip */
+        .project-gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .project-gallery-preview img {
+            width: 100%;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-gallery-preview img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
         }
 
         .project-tags {
@@ -791,14 +815,14 @@
         }
 
         .proj-btn-primary {
-            background: rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.35);
-            color: #a5b4fc;
+            background: rgba(2, 132, 199, 0.18);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #7dd3fc;
         }
 
         .proj-btn-primary:hover {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: #0284c7;
+            border-color: #0284c7;
             color: #ffffff;
         }
 
@@ -855,9 +879,9 @@
             gap: 5px;
             padding: 4px 12px;
             border-radius: var(--radius-pill);
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            color: #60a5fa;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #38bdf8;
             font-size: 12.5px;
             font-weight: 600;
         }
@@ -921,7 +945,7 @@
             top: 10px;
             bottom: 10px;
             width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
             opacity: 0.35;
         }
 
@@ -943,8 +967,8 @@
             height: 24px;
             border-radius: 50%;
             background: var(--bg-dark);
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 14px var(--primary);
+            border: 3px solid var(--primary-light);
+            box-shadow: 0 0 14px var(--primary-light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -953,8 +977,8 @@
         }
 
         .timeline-item:hover .timeline-marker {
-            border-color: var(--secondary);
-            box-shadow: 0 0 20px var(--secondary);
+            border-color: #ffffff;
+            box-shadow: 0 0 20px var(--primary-light);
             transform: scale(1.1);
         }
 
@@ -1001,9 +1025,9 @@
         }
 
         .badge-finalist {
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: #a5b4fc;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #7dd3fc;
         }
 
         .timeline-year {
@@ -1022,7 +1046,7 @@
 
         .timeline-organizer {
             font-size: 14px;
-            color: var(--secondary);
+            color: var(--primary-light);
             font-weight: 500;
             margin-bottom: 14px;
         }
@@ -1084,8 +1108,8 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.25);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1150,7 +1174,7 @@
         }
 
         .social-btn-large:hover {
-            background: rgba(99, 102, 241, 0.15);
+            background: rgba(56, 189, 248, 0.15);
             border-color: var(--border-hover);
             color: var(--primary-light);
             transform: translateY(-2px);
@@ -1188,7 +1212,7 @@
         .form-row input,
         .form-row textarea {
             width: 100%;
-            background: rgba(7, 10, 20, 0.6);
+            background: rgba(8, 10, 16, 0.6);
             border: 1px solid var(--border-color);
             padding: 14px 16px;
             border-radius: 10px;
@@ -1205,9 +1229,9 @@
 
         .form-row input:focus,
         .form-row textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-            background: rgba(11, 17, 32, 0.9);
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+            background: rgba(13, 18, 28, 0.9);
         }
 
         .form-row label {
@@ -1236,7 +1260,7 @@
 
         .form-submit-btn {
             width: 100%;
-            background: #4f46e5;
+            background: #0284c7;
             color: #ffffff;
             border: none;
             padding: 14px;
@@ -1249,20 +1273,20 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
         }
 
         .form-submit-btn:hover {
-            background: #4338ca;
+            background: #0369a1;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
         }
 
         /* Success screen */
         .form-success-overlay {
             position: absolute;
             inset: 0;
-            background: #0b1120;
+            background: #0d121c;
             border-radius: var(--radius-card);
             display: flex;
             flex-direction: column;
@@ -1327,7 +1351,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(4, 6, 14, 0.82);
+            background: rgba(4, 6, 14, 0.84);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             justify-content: center;
@@ -1344,14 +1368,14 @@
         }
 
         .popup-box {
-            background: #0b1120;
+            background: #0d121c;
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 32px;
             width: 100%;
             max-width: 480px;
             border-radius: 18px;
             text-align: center;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
             transform: scale(0.92);
             transition: var(--transition);
         }
@@ -1363,8 +1387,8 @@
         .popup-icon-circle {
             font-size: 36px;
             color: var(--primary-light);
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.25);
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             width: 64px;
             height: 64px;
             border-radius: 50%;
@@ -1410,12 +1434,12 @@
         }
 
         .popup-btn-confirm {
-            background: #4f46e5;
+            background: #0284c7;
             color: #ffffff;
         }
 
         .popup-btn-confirm:hover {
-            background: #4338ca;
+            background: #0369a1;
         }
 
         .popup-btn-cancel {
@@ -1427,6 +1451,133 @@
         .popup-btn-cancel:hover {
             background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
+        }
+
+        /* Blood Bank Gallery Modal */
+        .gallery-popup-box {
+            max-width: 680px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .gallery-header h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .gallery-close-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .gallery-close-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+        }
+
+        .gallery-main-display {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            background: #080a10;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-main-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(8, 10, 16, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        .gallery-nav-btn.prev-btn {
+            left: 12px;
+        }
+
+        .gallery-nav-btn.next-btn {
+            right: 12px;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .gallery-thumb-item {
+            width: 90px;
+            height: 56px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .gallery-thumb-item.active,
+        .gallery-thumb-item:hover {
+            opacity: 1;
+            border-color: var(--primary-light);
+        }
+
+        .gallery-thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Map Popup Box */
@@ -1515,6 +1666,10 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .gallery-main-display {
+                height: 260px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1527,7 +1682,7 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: rgba(7, 10, 20, 0.96);
+                background: rgba(8, 10, 16, 0.96);
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
                 border-bottom: 1px solid var(--border-color);
@@ -1587,6 +1742,10 @@
 
             .timeline-marker {
                 left: 6px;
+            }
+
+            .gallery-main-display {
+                height: 200px;
             }
         }
     </style>
@@ -1817,7 +1976,7 @@
 
             <div class="projects-grid">
 
-                <!-- 1. GrievTech (New Project) -->
+                <!-- 1. GrievTech -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
@@ -1850,7 +2009,7 @@
                     </div>
                 </div>
 
-                <!-- 2. CardioSense AI (New Project) -->
+                <!-- 2. CardioSense AI -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
@@ -2029,25 +2188,37 @@
                     </div>
                 </div>
 
-                <!-- 9. Blood Banking System -->
+                <!-- 9. Blood Banking System (With Added Photos & Photo Gallery) -->
                 <div class="project-card">
                     <div class="project-thumb">
                         <div class="thumb-overlay"></div>
-                        <span class="project-category-badge">Healthcare Web</span>
+                        <span class="project-category-badge">Healthcare Web & Emergency</span>
                         <img src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=600&q=80" alt="Blood Banking System">
                     </div>
                     <div class="project-body">
                         <h3 class="project-title">Blood Banking System</h3>
-                        <p class="project-desc">Emergency blood donation platform streamlining donor registrations, tracking ward inventory availability, and triggering Twilio alerts.</p>
+                        <p class="project-desc">Emergency blood donation platform streamlining donor registrations, tracking ward inventory availability, and triggering Twilio SMS alerts.</p>
+                        
+                        <!-- Multi-Photo Preview Strip -->
+                        <div class="project-gallery-preview">
+                            <img src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=400&q=80" alt="Blood donor testing" onclick="openBloodBankGallery(0)" title="Click to view full photo">
+                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=400&q=80" alt="Blood inventory storage" onclick="openBloodBankGallery(1)" title="Click to view full photo">
+                            <img src="https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&w=400&q=80" alt="Donation collection camp" onclick="openBloodBankGallery(2)" title="Click to view full photo">
+                        </div>
+
                         <div class="project-tags">
                             <span class="project-tag">Node.js</span>
-                            <span class="project-tag">Twilio</span>
+                            <span class="project-tag">Twilio SMS</span>
                             <span class="project-tag">Express.js</span>
                             <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">HTML5/CSS3</span>
                         </div>
                         <div class="project-actions">
-                            <button onclick="openProjectDetails('bloodbanking')" class="proj-btn proj-btn-secondary" style="width: 100%;">
-                                <i class="ri-information-line"></i> View Architecture
+                            <button onclick="openBloodBankGallery(0)" class="proj-btn proj-btn-primary">
+                                <i class="ri-image-line"></i> View Photos (4)
+                            </button>
+                            <button onclick="openProjectDetails('bloodbanking')" class="proj-btn proj-btn-secondary">
+                                <i class="ri-information-line"></i> Architecture
                             </button>
                         </div>
                     </div>
@@ -2328,6 +2499,33 @@
         </div>
     </div>
 
+    <!-- Blood Banking Photo Gallery Modal -->
+    <div id="bloodBankGalleryPopup" class="popup-overlay" onclick="closeBloodBankGallery(event)">
+        <div class="popup-box gallery-popup-box" onclick="event.stopPropagation()">
+            <div class="gallery-header">
+                <div>
+                    <h3 id="gallery-photo-title">Blood Banking System — Screen Preview</h3>
+                    <p id="gallery-photo-desc" style="color: var(--text-secondary); font-size: 13.5px; margin-bottom: 0;">Clinical blood group testing and donor registration portal.</p>
+                </div>
+                <button class="gallery-close-btn" onclick="closeBloodBankGallery(null)" aria-label="Close Gallery">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="gallery-main-display">
+                <img id="gallery-main-img" src="https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=1200&q=80" alt="Blood Bank Preview">
+                <button class="gallery-nav-btn prev-btn" onclick="prevGalleryPhoto()" aria-label="Previous photo">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+                <button class="gallery-nav-btn next-btn" onclick="nextGalleryPhoto()" aria-label="Next photo">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
+            </div>
+            <div class="gallery-thumbnails" id="gallery-thumb-strip">
+                <!-- Dynamically populated thumbnails -->
+            </div>
+        </div>
+    </div>
+
     <!-- Bangalore Map Modal -->
     <div id="mapPopup" class="popup-overlay" onclick="closeMapPopup(event)">
         <div class="popup-box" id="mapPopupBox" onclick="event.stopPropagation()">
@@ -2372,7 +2570,7 @@
                 if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
             }
             draw() {
-                ctx.fillStyle = `rgba(99, 102, 241, ${this.alpha})`;
+                ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -2398,7 +2596,7 @@
 
                     if (distance < maxDistance) {
                         let opacity = (1 - (distance / maxDistance)) * 0.12;
-                        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`;
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
                         ctx.lineWidth = 0.8;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -2531,9 +2729,10 @@
                 icon: "ri-heart-pulse-line",
                 desc: `<strong>Tech Stack:</strong> HTML, CSS, JavaScript, Node.js, Express.js, Twilio SMS API.<br><br>
                        <strong>Core Contributions:</strong><br>
-                       • Designed a collaborative emergency blood banking portal for hospitals, banks, and donor registry pools.<br>
+                       • Designed a collaborative emergency blood banking portal for hospitals, blood banks, and donor pools.<br>
                        • Integrated Twilio SMS alerts to dispatch blood request notifications directly to registered nearest donors.<br>
-                       • Engineered a fast database search index for tracking real-time blood type inventory levels across municipal wards.`
+                       • Engineered a fast database search index for tracking real-time blood group inventory (A+, B+, O+, AB-) across municipal wards.<br>
+                       • Built multi-photo visual workflows for donor eligibility screening and emergency ward dispatch.`
             },
             cricketpro: {
                 title: "Cricket Pro — Cricket Equipment E-Commerce",
@@ -2566,7 +2765,70 @@
         }
 
 
-        // --- 6. LEAFLET MAP POPUP ---
+        // --- 6. BLOOD BANK PHOTO GALLERY LOGIC ---
+        const bloodBankPhotos = [
+            {
+                url: "https://images.unsplash.com/photo-1615461066841-6116ecdacdca?auto=format&fit=crop&w=1200&q=80",
+                title: "Clinical Blood Group Testing & Matching",
+                desc: "Screening interface verifying donor eligibility, blood group classification, and real-time cross-match validation."
+            },
+            {
+                url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80",
+                title: "Blood Inventory & Cold Storage Monitoring",
+                desc: "Hospital ward inventory dashboard logging component units (RBC, Platelets, Plasma) with automated expiry alerts."
+            },
+            {
+                url: "https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&w=1200&q=80",
+                title: "Donor Collection & Bag Barcode Tracking",
+                desc: "Automated batch logging during emergency collection camps, ensuring chain-of-custody tracking across wards."
+            },
+            {
+                url: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+                title: "Twilio Emergency SMS Alerts & Dispatch",
+                desc: "Instant automated SMS broadcast to verified nearby donors within a 10km radius during critical trauma emergencies."
+            }
+        ];
+
+        let currentPhotoIndex = 0;
+
+        function openBloodBankGallery(index = 0) {
+            currentPhotoIndex = index;
+            updateGalleryView();
+            document.getElementById('bloodBankGalleryPopup').classList.add('active');
+        }
+
+        function updateGalleryView() {
+            const photo = bloodBankPhotos[currentPhotoIndex];
+            document.getElementById('gallery-main-img').src = photo.url;
+            document.getElementById('gallery-photo-title').textContent = photo.title;
+            document.getElementById('gallery-photo-desc').textContent = photo.desc;
+
+            const thumbStrip = document.getElementById('gallery-thumb-strip');
+            thumbStrip.innerHTML = bloodBankPhotos.map((p, i) => `
+                <div class="gallery-thumb-item ${i === currentPhotoIndex ? 'active' : ''}" onclick="openBloodBankGallery(${i})">
+                    <img src="${p.url}" alt="${p.title}">
+                </div>
+            `).join('');
+        }
+
+        function prevGalleryPhoto() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + bloodBankPhotos.length) % bloodBankPhotos.length;
+            updateGalleryView();
+        }
+
+        function nextGalleryPhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % bloodBankPhotos.length;
+            updateGalleryView();
+        }
+
+        function closeBloodBankGallery(event) {
+            if (event === null || event.target === document.getElementById('bloodBankGalleryPopup')) {
+                document.getElementById('bloodBankGalleryPopup').classList.remove('active');
+            }
+        }
+
+
+        // --- 7. LEAFLET MAP POPUP ---
         let map = null;
         let leafletScriptsLoaded = false;
 
@@ -2629,7 +2891,7 @@
         }
 
 
-        // --- 7. CONTACT FORM SUBMISSION ---
+        // --- 8. CONTACT FORM SUBMISSION ---
         function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('form-name').value;
